@@ -1,0 +1,149 @@
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav [mode]="Expandable?'over':'side'" opened="true" [attr.role]="isHandset?'dialog':'navigation'"
+    fixedInViewport="false" [disableClose]="true" [ngClass]="{'sidenav':!Expandable, 'sidenav_expandable':Expandable}"
+    id="sidenav">
+
+    <div class="menu-list" [ngClass]="{'menu-listCompressed':!Expandable, 'menu-listUnzipped':Expandable}"
+      id="menu-list">
+
+      <div id="buttonMenuIcon">
+        <button type="button" mat-icon-button
+          [ngClass]="{'unzippedMenuIcon':Expandable, 'compressedMenuIcon':!Expandable}"
+          (click)="Expandable=!Expandable;calculateMenu()" style="margin-top:1em;">
+          <i class="fa-solid fa-bars menuIcon" *ngIf="!Expandable"></i>
+          <i class="fa-solid fa-angles-left menuIcon" *ngIf="Expandable"></i>
+        </button>
+      </div>
+
+      <div *ngIf='!Expandable' class="iconoLogo" id="iconoLogo">
+        <img src="../../../assets/img/logo/logo_cerveza.png" alt="" (click)="routerMenu()">
+      </div>
+
+      <div *ngIf="Expandable" class="iconoBar" id="iconoBar">
+        <img src="../../../assets/img/logo/logo_bar.png" alt="" (click)="routerMenu()">
+      </div>
+
+      <div id="contentPerfil" [ngClass]="{'contentPerfil':Expandable,'contentPerfilCompressed':!Expandable}">
+        <div *ngIf="Expandable" class="info_user">
+          <h4>{{name}}</h4>
+          <h4 style="margin: 0;">{{sede}}</h4>
+        </div>
+      </div>
+
+      <div *ngIf="Expandable" class="buscador" id="buscador">
+        <mat-form-field class="mat-elevation-z8">
+          <input matInput [(ngModel)]="filter" (keyup.enter)="filtroMenu()" style="color: black; width: 11em;"
+            placeholder="Buscar">
+          <i class="fa-solid fa-magnifying-glass iconSearch" matSuffix></i>
+        </mat-form-field>
+      </div>
+
+      <!-- Menu descomprimido -->
+      <div id="unzippedMenu" [ngClass]="{'unzippedMenuOpen':Expandable,'unzippedMenuClose':!Expandable}"
+        class="unzippedMenu">
+        <ul id="nav_menu" class="nav">
+          <div *ngFor="let menu of menus">
+            <li>
+              <div class="item" [id]="'m'+menu.idMenu">
+                <div>
+                  <a class="principal" (click)="recargar('m'+menu.idMenu);active(menu.idMenu)"
+                    [routerLink]="['/menu/' + menu.name.toLowerCase()]">
+                    <i class="fa-solid" [ngClass]="{'fa-users': menu.idMenu===1, 'fa-earth-americas': menu.idMenu===2,
+                    'fa-city': menu.idMenu===3}"></i>
+                    <span class="nameModule">{{menu.name}}</span>
+                  </a>
+                </div>
+              </div>
+            </li>
+          </div>
+        </ul>
+      </div>
+
+      <!-- Menu comprimido -->
+      <div [ngClass]="{'compressedMenuButtonsOpen':!Expandable,'compressedMenuButtonsClose':Expandable}"
+        class="compressedMenuButtons" id="compressedMenuButtons">
+        <div class="compressedMenu" id="compressedMenu">
+          <div id="compressedItemsMenu" class="scroll_container">
+            <div *ngFor="let menu of menus" class="compressedItems">
+              <div (mouseover)="mostrar(menu.idMenu)" (mouseout)="cerrar(menu.idMenu)"
+                (click)='Expandable=!Expandable;calculateMenu();' [id]="'cm' + menu.idMenu">
+                <i class="fa-solid" [ngClass]="{'fa-users': menu.idMenu===1, 'fa-earth-americas': menu.idMenu===2,
+                    'fa-city': menu.idMenu===3}"></i>
+                <span class="toltipItemsMenu" [id]="'tc' + menu.idMenu">{{menu.name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="Expandable" class="iconoFooter" id="iconoFooter">
+        <img src="../../../assets/img/logo/logo_footerA.png" alt="">
+      </div>
+
+      <div *ngIf='!Expandable' class="iconoLogoFooter" id="iconoLogoFooter">
+        <img src="../../../assets/img/logo/logo_footer.png" alt="">
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content [ngClass]="{'compressedSidenav':Expandable, 'unzipedSidenav':!Expandable}">
+    <div class="header" id="header">
+      <header>
+        <div style="display: flex; align-items: center;">
+          <div>
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button
+              (click)="Expandable=!Expandable;calculateMenu()" *ngIf="(isHandset | async)!.matches">
+              <i class="fa-solid fa-bars expandir" style="color: var(--soft-green);"></i>
+            </button>
+          </div>
+        </div>
+
+        <section class="iconsLayout">
+          <div class="icon_calendar" (click)="calendarDate1=!calendarDate1" (mouseover)="calendarDate=true"
+            (mouseout)="calendarDate=false">
+            <!-- <img src="../../../assets/img/iconos/calendario.png" alt="" class="icon_main"> -->
+          </div>
+          <div class="userClose_img" [matMenuTriggerFor]="options">
+            <i class="fa-solid fa-right-from-bracket icon_main"></i>
+            <!-- <img src="../../../assets/img/iconos/salir.png" alt="" class="icon_main"> -->
+          </div>
+          <mat-menu class="logout" #options="matMenu">
+            <button mat-menu-item (click)="logout()">Cerrar sesión</button>
+          </mat-menu>
+        </section>
+      </header>
+    </div>
+
+    <!-- <breadcrumb #parent id="breadcrumb">
+      <ol class="breadcrumb" id="cont_breadcrumb">
+        <ng-template ngFor let-route [ngForOf]="parent.breadcrumbs">
+          <li *ngIf="!route.terminal" class="breadcrumb-item">
+            <a (click)="rutas(route.url)" [routerLink]="[route.url]">{{route.displayName }} ></a>
+          </li>
+          <li *ngIf="route.terminal" (click)="activeName(route.displayName)" class="breadcrumb-item active">
+            {{route.displayName}}
+          </li>
+        </ng-template>
+        <div class="icon_day" *ngIf="calendarDate || calendarDate1">
+          <app-hora></app-hora>
+        </div>
+      </ol>
+    </breadcrumb> -->
+
+    <!-- Layout -->
+    <div id="cont_router" class="cont_router">
+      <div id="cont_separador" class="cont_separador">
+        <div id="cont_card" class="cont_card mat-elevation-z2">
+          <div id="cont_info" class="cont_info">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer" class="footer">
+      <p>2023 PNS. Todos los derechos reservados</p>
+    </footer>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

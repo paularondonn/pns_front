@@ -1,0 +1,755 @@
+/* Sidenav */
+.mat-sidenav-container {
+  height: 100%;
+  background: #fff;
+}
+
+.mat-sidenav {
+  font-size: 1em;
+  height: 100%;
+  margin: 0;
+  border-top-right-radius: 1.875em;
+  border-bottom-right-radius: 1.875em;
+  background: linear-gradient(
+    180deg,
+    rgb(66, 220, 225) 0%,
+    rgb(39, 62, 165) 40%,
+    rgb(0, 20, 107) 100%
+  );
+}
+
+/* Foto del usuario redirige al perfil*/
+.fotoDelPerfil {
+  cursor: pointer;
+}
+
+.hoverImg {
+  position: absolute;
+  width: 5.5em;
+  height: 5.5em;
+  left: 7.2em;
+  top: 11.7em;
+  opacity: 0.78;
+  border-radius: 50%;
+}
+
+.hoverFoto {
+  opacity: 0;
+}
+
+.externalInk {
+  position: absolute;
+  top: 13em;
+  left: 9.5em;
+}
+
+.hoverFoto > span {
+  position: absolute;
+  top: 22em;
+  left: 11.15em;
+  font: normal normal 600 10px/0px Nunito;
+}
+
+/*Fin hover imagen*/
+.sidenav {
+  width: 3.572em;
+  transition: 400ms ease-out;
+  overflow: hidden;
+}
+
+.sidenav_expandable {
+  width: 20em;
+  transition: 500ms ease-out;
+  overflow: hidden;
+}
+
+/* Styles menu */
+
+/*Tamaño contenedor logo, foto y menú*/
+.menu-list {
+  color: var(--white);
+  overflow: hidden;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* --- */
+
+/* Menu lista comprimido */
+.menu-listCompressed {
+  width: 100%;
+}
+
+/* --- */
+
+/* Menulista descomprimido */
+.menu-listUnzipped {
+  height: 100% !important;
+  min-width: 100%;
+}
+
+/* Botones menu (Comprimir-Descomprimir) */
+.unzippedMenuIcon {
+  position: absolute;
+  right: 1em;
+}
+
+.compressedMenuIcon {
+  text-align: center;
+  width: 100%;
+}
+
+.menuIcon {
+  font-size: 1.5em;
+}
+
+/* --- */
+
+/* Icono logo care his */
+.iconoLogo {
+  text-align: center;
+  padding-top: 2.813em;
+  cursor: pointer;
+}
+
+.iconoLogo > img {
+  width: 2.42em;
+  height: 2.42em;
+  object-fit: cover;
+}
+
+.iconoBar {
+  padding-top: 5em;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.iconoBar > img {
+  height: 10em;
+}
+
+/* --- */
+
+/* Contenedor perfil (Imagen - nombre - sede) */
+.contentPerfil {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contentPerfilCompressed {
+  display: none;
+}
+
+.perfil {
+  border-radius: 50%;
+  width: 5.4em;
+  height: 5.4em;
+  margin: 0;
+}
+
+.perfil > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--white);
+}
+
+.iconoPerfilCompressed {
+  display: none;
+}
+
+.info_user {
+  text-align: center;
+  width: 100%;
+  padding: 1.94444em 0;
+}
+
+.info_user > h4 {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.info_user > h4:first-child {
+  margin: 0;
+}
+
+/* --- */
+
+/* Buscador */
+.buscador {
+  text-align: center;
+}
+
+::ng-deep
+  #buscador
+  > .mat-form-field-appearance-outline
+  .mat-form-field-outline {
+  color: var(--white) !important;
+}
+
+::ng-deep
+  #buscador
+  > .mat-form-field-appearance-outline
+  .mat-form-field-outline-thick {
+  color: var(--white) !important;
+}
+
+::ng-deep #buscador > .mat-form-field > .mat-form-field-wrapper {
+  background-color: var(--white);
+  border-bottom-right-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  border-top-left-radius: 0.5em;
+}
+
+::ng-deep #buscador > .mat-form-field {
+  width: 20.65em;
+}
+
+::ng-deep #buscador > .mat-form-field > div > div > .mat-form-field-infix {
+  border-top-width: 0;
+  padding: 1.5em 0 1em 0;
+}
+
+.buscador > .mat-elevation-z8 {
+  border-bottom-right-radius: 0.5em !important;
+  border-bottom-left-radius: 0.5em !important;
+  border-top-right-radius: 0.5em !important;
+  border-top-left-radius: 0.5em !important;
+}
+
+/* ---- */
+
+/* Menu descomprimido */
+.unzippedMenuOpen {
+  display: block;
+}
+
+.unzippedMenuClose {
+  display: none;
+}
+
+/*Tamaño contenedor menú*/
+.unzippedMenu {
+  padding: 3.4722em 0;
+}
+
+.menu-list ul {
+  padding: 0em;
+  /* padding: 0 0.313em; */
+}
+
+.nav {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.nav a {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 0.5em;
+}
+
+/* --- */
+
+/* Estilos items */
+li,
+ul {
+  list-style: none;
+  cursor: pointer;
+  line-height: 2.5em;
+}
+
+span {
+  line-height: 1.5em;
+}
+
+.item > div {
+  padding: 0 2em;
+}
+
+.item > div {
+  display: flex;
+  align-items: center;
+  max-width: 16.5em;
+  height: 2.78em;
+  color: white !important;
+}
+
+/* Iconos */
+.iconSubmenu {
+  font-size: 0.5em;
+  margin-right: 1.1em;
+  margin-left: 2em;
+}
+
+/* --- */
+
+/* Primer nivel */
+.principal {
+  display: flex;
+  color: white !important;
+}
+
+.principal > img {
+  width: 1.35em;
+  margin-inline-end: 0.4em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 0.2em;
+}
+
+.principal > i {
+  font-size: 1.25em;
+  margin-inline-end: 0.4em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 0.2em;
+  width: 1.5em;
+  text-align: center;
+}
+
+.principal > span,
+.nameModule {
+  font-size: 0.875em;
+}
+
+/* --- */
+
+/*Color letra niveles */
+.item {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* --- */
+.item:hover > div > a > span {
+  text-decoration: underline;
+}
+
+.item:hover > div > a > span {
+  font-weight: 600;
+}
+
+/* --- */
+
+/* Rotar desplegable (>)*/
+.showSub {
+  transition: 500ms ease-in-out;
+  transform: rotate(0deg);
+}
+
+.showSub.rotated {
+  transform: rotate(90deg);
+}
+
+/* --- */
+
+/* --- */
+
+/* Scrollbar menu descomprimido */
+.compressedMenuButtonsOpen {
+  display: block;
+}
+
+.compressedMenuButtonsClose {
+  display: none;
+}
+
+.nav::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+.nav::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-top-right-radius: 1em;
+  border-top-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+
+/* --- */
+
+/* Menu comprimido */
+
+/* Tamaño contenedor menu y botones*/
+.compressedMenuButtons {
+  padding: 3.125em 0;
+}
+
+/* --- */
+
+/* Botones de desplazamiento */
+.angles {
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.inactiveAngles {
+  pointer-events: none !important;
+  color: transparent;
+}
+
+/* --- */
+
+/* Tamaño contenedor menu */
+.compressedMenu {
+  padding: 0.8em 0 0 0;
+}
+
+.compressedMenu > div {
+  padding: 1em 0;
+  width: 3.125em;
+  text-align: center;
+  border-top: 0.125em solid #f9faff;
+  border-bottom: 0.125em solid #f9faff;
+  width: auto;
+}
+
+/* Scroll */
+.scroll_container::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.scroll_container::-webkit-scrollbar-thumb {
+  background-color: white !important;
+  border-top-right-radius: 1em !important;
+  border-top-left-radius: 1em !important;
+  border-bottom-right-radius: 1em !important;
+  border-bottom-left-radius: 1em !important;
+}
+
+/* --- */
+
+/* Contendor items menu */
+.compressedItems {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 2.5em;
+}
+
+.compressedItems > :last-child {
+  margin: 0;
+}
+
+.compressedItems > div {
+  position: relative;
+  cursor: pointer;
+  width: 1.875em;
+  height: 1.875em;
+  font-size: 1.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.compressedItems > div > i {
+  height: 1.12em;
+}
+
+.compressedItems > div > i {
+  font-size: 1.25em;
+}
+
+/* --- */
+
+/* Hover recuadro con texto items menu */
+.toltipItemsMenu {
+  background-color: var(--white);
+  padding: 0 1em;
+  border-radius: 0 0.5em 0.5em 0;
+  border-top: 0.063em solid var(--soft-lilac);
+  border-bottom: 0.063em solid var(--soft-lilac);
+  border-right: 0.063em solid var(--soft-lilac);
+  position: fixed;
+  font-size: 0.75em;
+  opacity: 0;
+  width: 0;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Activar hover */
+.activeTooltip {
+  background-color: var(--white);
+  border-top: 0.063em solid var(--soft-lilac);
+  border-bottom: 0.063em solid var(--soft-lilac);
+  width: 100% !important;
+  color: var(--soft-lilac);
+}
+
+/* Activar */
+.activeModule {
+  background-color: var(--white);
+  width: 100% !important;
+  color: var(--soft-lilac);
+}
+
+/* --- */
+
+/* --- */
+
+/* Icono it health footer*/
+.iconoFooter {
+  padding-bottom: 1.38888em;
+  height: 3.473em;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconoFooter > img {
+  height: 100%;
+}
+
+.iconoLogoFooter {
+  text-align: center;
+  padding-bottom: 2.56em;
+}
+
+.iconoLogoFooter > img {
+  width: 1.806em;
+  object-fit: cover;
+}
+
+/* --- */
+
+/* Sidenav content */
+mat-sidenav-content {
+  font-size: 1em;
+  margin-left: 3.572em !important;
+}
+
+.header {
+  height: 3.125em;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+header > div {
+  width: 40%;
+}
+
+header > div > mat-form-field {
+  font-size: 0.7em !important;
+  margin-left: 0.5em;
+}
+
+/* --- */
+
+/* Iconos Layout */
+.iconsLayout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.iconsLayout > h3 {
+  margin: 0;
+  margin-right: 1em;
+  font-size: 1.18em;
+}
+
+.iconsLayout > div {
+  width: 1.715em;
+  margin-right: 1em;
+}
+
+.icon_main {
+  width: 1.45em;
+  cursor: pointer;
+  color: var(--soft-lilac);
+}
+
+.icon_manual:hover > i,
+.icon_user:hover > i,
+.icon_calendar:hover > i,
+.userClose_img:hover > i {
+  color: var(--light-green);
+}
+
+.userClose_img {
+  text-align: center;
+  cursor: pointer;
+}
+
+.userClose_img > img {
+  width: 1.35em;
+}
+
+.iconsLayout > p {
+  margin: 0;
+}
+
+.logout {
+  min-height: 3.125em !important;
+}
+
+.icon_day {
+  position: absolute;
+  right: 5em;
+  display: flex;
+  align-items: center;
+  background: white;
+  cursor: pointer;
+  border-radius: 0.3em;
+}
+
+.icon_day > app-hora {
+  padding: 0.2em 0.8em;
+}
+
+/* --- */
+
+/* --- */
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  background-color: var(--strong-light-cian);
+  margin: 0;
+  height: 2.858em;
+  align-items: center;
+}
+
+.breadcrumb > li {
+  font-size: 0.875em;
+}
+
+.breadcrumb > li:not(first-child) {
+  margin: 0 0.3em;
+}
+
+.breadcrumb-item > a {
+  text-decoration: none;
+  color: var(--soft-gray);
+}
+
+.active {
+  font-weight: 600;
+}
+
+.icon_bell {
+  background-color: var(--white);
+  position: absolute;
+  right: 0;
+  width: 4em;
+  border-top-left-radius: 0.3em;
+  border-bottom-left-radius: 0.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---- */
+
+/* --- */
+
+/* Contenedor carta general */
+.cont_router {
+  background-color: var(--soft-white);
+}
+
+.cont_separador {
+  padding: 4.2857em;
+}
+
+.cont_card[_ngcontent-iuc-c286] {
+  margin-top: -2px;
+  border-top: solid 7px;
+  border-color: var(--soft-green);
+  position: relative;
+  padding: 1.875em;
+  border-radius: 9px;
+  background-color: var(--white);
+}
+
+.cont_card {
+  position: relative;
+  padding: 2.14285em;
+  border-radius: 0.625em;
+  background-color: var(--white);
+}
+
+.cont_info {
+  position: relative;
+  padding: 0 !important;
+}
+
+/* --- */
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 0.063em solid var(--dark-gray-desaturated);
+  height: 1.25em;
+  text-align: center;
+}
+
+.footer > p {
+  font-size: 0.75em;
+  font-weight: 600;
+  color: var(--soft-gray);
+  margin: 0;
+}
+
+/* --- */
+
+/* --- */
+
+/* Screens */
+
+@media only screen and (max-width: 1380px) {
+  .mat-sidenav {
+    font-size: 0.75em;
+  }
+
+  mat-sidenav-content {
+    font-size: 0.75em;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  .sidenav {
+    display: none;
+    width: 0 !important;
+  }
+
+  .compressedSidenav {
+    margin-left: 3.572em !important;
+  }
+
+  .unzipedSidenav {
+    margin: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .mat-sidenav {
+    font-size: 0.55em;
+  }
+
+  mat-sidenav-content {
+    font-size: 0.55em;
+  }
+}

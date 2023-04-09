@@ -1,0 +1,42 @@
+<div class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" id=header [ngStyle]="{backgroundColor: color}"> </div>
+
+      <div class="img col-md-12 d-flex justify-content-center">
+        <img [src]="image" alt="">
+      </div>
+
+      <div class="modal-body" *ngIf="content===undefined">
+        <div class="scroll_container">
+          <h1 *ngIf='!!title && title!==""'>{{title}}</h1>
+
+          <h2 *ngIf='title===""' style="font-weight: 600 !important;" [ngClass]="{'informative_title':color=== informative}"
+            [ngClass]="{'group_tamaño': error}" style="font-size:1em">
+            <span> {{primaryInformation}} </span>
+            <br>
+            <span [ngClass]="{'group_tamaño2':color === informative}">
+              {{secondaryInformation!==''?secondaryInformation:''}}
+            </span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="modal-body-content" *ngIf="!!content">
+        <ng-container>
+          <ng-container *ngTemplateOutlet="content"></ng-container>
+        </ng-container>
+      </div>
+
+      <div class="container_buttons modal-footer">
+        <button *ngIf="!!primaryButton"
+          [ngStyle]="{backgroundColor: letterColor, color:color, borderColor: color, borderWidth: '0.1em', borderStyle: 'solid'}"
+          class="button btncancelar" (click)="close()">{{primaryButton}}</button>
+        <button (click)="primary()"
+          [ngClass]="{'secondaryButton':primaryButton, 'HvGreen':color === successful, 'HvRed': color === error}"
+          [ngStyle]="{backgroundColor: color, color: letterColor}" class="button btnaceptar"
+          style="letter-spacing: 0.2em;">{{secondaryButton!==undefined?secondaryButton:'Aceptar'}}</button>
+      </div>
+    </div>
+  </div>
+</div>

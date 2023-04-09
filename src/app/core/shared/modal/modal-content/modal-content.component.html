@@ -1,0 +1,16 @@
+<div class="modal_container" [ngClass]="{'borderModal_container':border!==undefined}" (scroll)="onScroll($event)">
+  <div class="filledModal_container">
+    <ng-container *ngIf="!!content">
+      <ng-container *ngTemplateOutlet="content"></ng-container>
+    </ng-container>
+    <div class="button_modals">
+      <button *ngIf="secondaryButton!=='none'"
+        [ngClass]="{'accept': primaryButton===null || primaryButton === '', 'cancel': !!primaryButton }" class="button"
+        (click)="second()">{{secondaryButton}}
+      </button>
+      <button *ngIf="!!primaryButton" [ngClass]="{'inactive':!permiso}" class="button accept" (click)="primary()">
+        {{primaryButton}}
+      </button>
+    </div>
+  </div>
+</div>
