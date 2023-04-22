@@ -10,12 +10,10 @@
   margin: 0;
   border-top-right-radius: 1.875em;
   border-bottom-right-radius: 1.875em;
-  background: linear-gradient(
-    180deg,
-    rgb(66, 220, 225) 0%,
-    rgb(39, 62, 165) 40%,
-    rgb(0, 20, 107) 100%
-  );
+  background: linear-gradient(180deg,
+      rgb(66, 220, 225) 0%,
+      rgb(39, 62, 165) 40%,
+      rgb(0, 20, 107) 100%);
 }
 
 /* Foto del usuario redirige al perfil*/
@@ -43,7 +41,7 @@
   left: 9.5em;
 }
 
-.hoverFoto > span {
+.hoverFoto>span {
   position: absolute;
   top: 22em;
   left: 11.15em;
@@ -114,7 +112,7 @@
   cursor: pointer;
 }
 
-.iconoLogo > img {
+.iconoLogo>img {
   width: 2.42em;
   height: 2.42em;
   object-fit: cover;
@@ -127,8 +125,13 @@
   cursor: pointer;
 }
 
-.iconoBar > img {
+.iconoBar>img {
   height: 10em;
+}
+
+.iconoLogo>img,
+.iconoBar>img {
+  border-radius: 50%;
 }
 
 /* --- */
@@ -151,7 +154,7 @@
   margin: 0;
 }
 
-.perfil > img {
+.perfil>img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -169,12 +172,12 @@
   padding: 1.94444em 0;
 }
 
-.info_user > h4 {
+.info_user>h4 {
   font-size: 1em;
   font-weight: 600;
 }
 
-.info_user > h4:first-child {
+.info_user>h4:first-child {
   margin: 0;
 }
 
@@ -185,21 +188,15 @@
   text-align: center;
 }
 
-::ng-deep
-  #buscador
-  > .mat-form-field-appearance-outline
-  .mat-form-field-outline {
+::ng-deep #buscador>.mat-form-field-appearance-outline .mat-form-field-outline {
   color: var(--white) !important;
 }
 
-::ng-deep
-  #buscador
-  > .mat-form-field-appearance-outline
-  .mat-form-field-outline-thick {
+::ng-deep #buscador>.mat-form-field-appearance-outline .mat-form-field-outline-thick {
   color: var(--white) !important;
 }
 
-::ng-deep #buscador > .mat-form-field > .mat-form-field-wrapper {
+::ng-deep #buscador>.mat-form-field>.mat-form-field-wrapper {
   background-color: var(--white);
   border-bottom-right-radius: 0.5em;
   border-bottom-left-radius: 0.5em;
@@ -207,16 +204,16 @@
   border-top-left-radius: 0.5em;
 }
 
-::ng-deep #buscador > .mat-form-field {
+::ng-deep #buscador>.mat-form-field {
   width: 20.65em;
 }
 
-::ng-deep #buscador > .mat-form-field > div > div > .mat-form-field-infix {
+::ng-deep #buscador>.mat-form-field>div>div>.mat-form-field-infix {
   border-top-width: 0;
   padding: 1.5em 0 1em 0;
 }
 
-.buscador > .mat-elevation-z8 {
+.buscador>.mat-elevation-z8 {
   border-bottom-right-radius: 0.5em !important;
   border-bottom-left-radius: 0.5em !important;
   border-top-right-radius: 0.5em !important;
@@ -272,11 +269,11 @@ span {
   line-height: 1.5em;
 }
 
-.item > div {
+.item>div {
   padding: 0 2em;
 }
 
-.item > div {
+.item>div {
   display: flex;
   align-items: center;
   max-width: 16.5em;
@@ -299,7 +296,7 @@ span {
   color: white !important;
 }
 
-.principal > img {
+.principal>img {
   width: 1.35em;
   margin-inline-end: 0.4em;
   margin-top: 0.5em;
@@ -307,7 +304,7 @@ span {
   margin-left: 0.2em;
 }
 
-.principal > i {
+.principal>i {
   font-size: 1.25em;
   margin-inline-end: 0.4em;
   margin-top: 0.5em;
@@ -317,7 +314,7 @@ span {
   text-align: center;
 }
 
-.principal > span,
+.principal>span,
 .nameModule {
   font-size: 0.875em;
 }
@@ -330,11 +327,11 @@ span {
 }
 
 /* --- */
-.item:hover > div > a > span {
+.item:hover>div>a>span {
   text-decoration: underline;
 }
 
-.item:hover > div > a > span {
+.item:hover>div>a>span {
   font-weight: 600;
 }
 
@@ -404,7 +401,7 @@ span {
   padding: 0.8em 0 0 0;
 }
 
-.compressedMenu > div {
+.compressedMenu>div {
   padding: 1em 0;
   width: 3.125em;
   text-align: center;
@@ -436,11 +433,11 @@ span {
   margin-bottom: 2.5em;
 }
 
-.compressedItems > :last-child {
+.compressedItems> :last-child {
   margin: 0;
 }
 
-.compressedItems > div {
+.compressedItems>div {
   position: relative;
   cursor: pointer;
   width: 1.875em;
@@ -451,11 +448,11 @@ span {
   align-items: center;
 }
 
-.compressedItems > div > i {
+.compressedItems>div>i {
   height: 1.12em;
 }
 
-.compressedItems > div > i {
+.compressedItems>div>i {
   font-size: 1.25em;
 }
 
@@ -489,6 +486,10 @@ span {
 }
 
 /* Activar */
+.activeMenu {
+  text-decoration: underline;
+}
+
 .activeModule {
   background-color: var(--white);
   width: 100% !important;
@@ -509,7 +510,7 @@ span {
   align-items: center;
 }
 
-.iconoFooter > img {
+.iconoFooter>img {
   height: 100%;
 }
 
@@ -518,7 +519,7 @@ span {
   padding-bottom: 2.56em;
 }
 
-.iconoLogoFooter > img {
+.iconoLogoFooter>img {
   width: 1.806em;
   object-fit: cover;
 }
@@ -543,11 +544,11 @@ header {
   height: 100%;
 }
 
-header > div {
+header>div {
   width: 40%;
 }
 
-header > div > mat-form-field {
+header>div>mat-form-field {
   font-size: 0.7em !important;
   margin-left: 0.5em;
 }
@@ -562,13 +563,13 @@ header > div > mat-form-field {
   align-items: center;
 }
 
-.iconsLayout > h3 {
+.iconsLayout>h3 {
   margin: 0;
   margin-right: 1em;
   font-size: 1.18em;
 }
 
-.iconsLayout > div {
+.iconsLayout>div {
   width: 1.715em;
   margin-right: 1em;
 }
@@ -579,10 +580,10 @@ header > div > mat-form-field {
   color: var(--soft-lilac);
 }
 
-.icon_manual:hover > i,
-.icon_user:hover > i,
-.icon_calendar:hover > i,
-.userClose_img:hover > i {
+.icon_manual:hover>i,
+.icon_user:hover>i,
+.icon_calendar:hover>i,
+.userClose_img:hover>i {
   color: var(--light-green);
 }
 
@@ -591,11 +592,11 @@ header > div > mat-form-field {
   cursor: pointer;
 }
 
-.userClose_img > img {
+.userClose_img>img {
   width: 1.35em;
 }
 
-.iconsLayout > p {
+.iconsLayout>p {
   margin: 0;
 }
 
@@ -613,7 +614,7 @@ header > div > mat-form-field {
   border-radius: 0.3em;
 }
 
-.icon_day > app-hora {
+.icon_day>app-hora {
   padding: 0.2em 0.8em;
 }
 
@@ -630,15 +631,15 @@ header > div > mat-form-field {
   align-items: center;
 }
 
-.breadcrumb > li {
+.breadcrumb>li {
   font-size: 0.875em;
 }
 
-.breadcrumb > li:not(first-child) {
+.breadcrumb>li:not(first-child) {
   margin: 0 0.3em;
 }
 
-.breadcrumb-item > a {
+.breadcrumb-item>a {
   text-decoration: none;
   color: var(--soft-gray);
 }
@@ -706,7 +707,7 @@ header > div > mat-form-field {
   text-align: center;
 }
 
-.footer > p {
+.footer>p {
   font-size: 0.75em;
   font-weight: 600;
   color: var(--soft-gray);

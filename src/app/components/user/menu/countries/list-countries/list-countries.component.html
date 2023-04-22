@@ -1,4 +1,5 @@
-<h1 class="main_title">Paises</h1>
+<div class="container_card">
+  <h1 class="main_title">Paises</h1>
 
 <div class="finder_container filters_container">
   <div class="content_search input_filter">
@@ -19,30 +20,29 @@
   </div>
 </div>
 
-<div>
-  <div id="tbl_country">
-    <table class="mat-elevation-z8">
-      <thead>
-        <tr>
-          <th>Código</th>
-          <th>Nombre</th>
-          <th>Editar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          *ngFor="let item of listCountry |  paginate: {id:'country_table', itemsPerPage: objItems.items, currentPage: paginador}">
-          <td>{{item.idCountry}}</td>
-          <td class="item_name">{{item.name}}</td>
-          <td (click)="addEdit(item.idCountry)">
-            <i class="fa-solid fa-pen icon_edit"></i>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <pagination-controls class="my-pagination pagination" id="country_table" (pageChange)="paginador = $event"
-    previousLabel="" nextLabel=""></pagination-controls>
+<div id="tbl_country">
+  <table class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let item of listCountry | countries:filter | paginate: {id:'country_table', itemsPerPage: objItems.items, currentPage: paginador}">
+        <td>{{item.idCountry}}</td>
+        <td class="item_name">{{item.name}}</td>
+        <td (click)="addEdit(item.idCountry)">
+          <i class="fa-solid fa-pen icon_edit"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<pagination-controls class="my-pagination pagination" id="country_table" (pageChange)="paginador = $event"
+  previousLabel="" nextLabel=""></pagination-controls>
 </div>
 
 <ng-template #createUpdateCountry>
@@ -52,7 +52,7 @@
       <mat-form-field>
         <mat-label>Nombre</mat-label>
         <input matInput type="text" [formControl]="name" placeholder="Nombre">
-        <mat-error *ngIf="name.invalid">Campo obligatorio: Ingresar información</mat-error>
+        <mat-error *ngIf="name.invalid">{{CountryNameErrorMessage}}</mat-error>
       </mat-form-field>
     </div>
   </div>

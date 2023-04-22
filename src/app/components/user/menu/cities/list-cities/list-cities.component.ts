@@ -29,6 +29,7 @@ export class ListCitiesComponent implements OnInit {
     this.cityService.listCities().subscribe((resp) => {
       if (resp.data != null) {
         this.listCity = resp.data;
+        setTimeout(() => this.positionPagination(), 100);
       } else {
         this.listCity = [];
       }

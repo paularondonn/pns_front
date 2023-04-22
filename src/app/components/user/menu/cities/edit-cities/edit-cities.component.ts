@@ -83,8 +83,22 @@ export class EditCitiesComponent implements OnInit {
           this.router.navigate(['/menu', 'ciudades']);
           dialogRef.close();
         });
+      } else {
+        if (resp.message === 'Nombre de ciudad existente') {
+          const combinationExist = { combinationExist: true };
+          this.fc['name'].setErrors(combinationExist);
+          this.fc['name'].markAsTouched();
+        }
       }
     });
   }
 
+  /* Mensajes de error */
+  get CityNameErrorMessage() {
+    if (this.fc['name'].hasError('required')) {
+      return 'Campo obligatorio: Ingresar información.';
+    } else {
+      return 'Error: Nombre de ciudad existente';
+    }
+  }
 }

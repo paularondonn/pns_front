@@ -16,7 +16,7 @@
       </div>
 
       <div *ngIf='!Expandable' class="iconoLogo" id="iconoLogo">
-        <img src="../../../assets/img/logo/logo_cerveza.png" alt="" (click)="routerMenu()">
+        <img src="../../../assets/img/logo/logo_bar.png" alt="" (click)="routerMenu()">
       </div>
 
       <div *ngIf="Expandable" class="iconoBar" id="iconoBar">
@@ -46,11 +46,11 @@
             <li>
               <div class="item" [id]="'m'+menu.idMenu">
                 <div>
-                  <a class="principal" (click)="recargar('m'+menu.idMenu);active(menu.idMenu)"
+                  <a class="principal" (click)="active(menu.idMenu)"
                     [routerLink]="['/menu/' + menu.name.toLowerCase()]">
                     <i class="fa-solid" [ngClass]="{'fa-users': menu.idMenu===1, 'fa-earth-americas': menu.idMenu===2,
-                    'fa-city': menu.idMenu===3}"></i>
-                    <span class="nameModule">{{menu.name}}</span>
+                    'fa-city': menu.idMenu===3, 'fa-toilet-portable':menu.idMenu===4}"></i>
+                    <span class="nameModule" [id]="'module'+menu.idMenu">{{menu.name}}</span>
                   </a>
                 </div>
               </div>
@@ -68,7 +68,7 @@
               <div (mouseover)="mostrar(menu.idMenu)" (mouseout)="cerrar(menu.idMenu)"
                 (click)='Expandable=!Expandable;calculateMenu();' [id]="'cm' + menu.idMenu">
                 <i class="fa-solid" [ngClass]="{'fa-users': menu.idMenu===1, 'fa-earth-americas': menu.idMenu===2,
-                    'fa-city': menu.idMenu===3}"></i>
+                    'fa-city': menu.idMenu===3, 'fa-toilet-portable':menu.idMenu===4}"></i>
                 <span class="toltipItemsMenu" [id]="'tc' + menu.idMenu">{{menu.name}}</span>
               </div>
             </div>
@@ -77,11 +77,11 @@
       </div>
 
       <div *ngIf="Expandable" class="iconoFooter" id="iconoFooter">
-        <img src="../../../assets/img/logo/logo_footerA.png" alt="">
+        <!-- <img src="../../../assets/img/logo/logo_footer.png" alt=""> -->
       </div>
 
       <div *ngIf='!Expandable' class="iconoLogoFooter" id="iconoLogoFooter">
-        <img src="../../../assets/img/logo/logo_footer.png" alt="">
+        <!-- <img src="../../../assets/img/logo/logo_footer.png" alt=""> -->
       </div>
     </div>
   </mat-sidenav>

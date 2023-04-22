@@ -1,0 +1,18 @@
+/* Contenedor */
+.container_tables {
+  height: calc(100% - 8.5em);
+  position: relative;
+}
+
+/* Fin contenedor */
+
+/* Contenedor formulario */
+.container_formTables {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(3, minmax(min(100%, 10em), 1fr));
+  gap: 2em;
+  width: 100%;
+}
+
+/* Fin contenedor formulario */

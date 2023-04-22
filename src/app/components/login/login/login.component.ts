@@ -54,12 +54,12 @@ export class LoginComponent implements OnInit {
           } else {
             this.headquarters = [];
           }
+        } else {
+          const combinationExist = { combinationExist: true };
+          this.fc['user'].setErrors(combinationExist);
+          this.fc['user'].markAsTouched();
         }
       }, (error) => {
-        console.log('entraaa')
-        const combinationExist = { combinationExist: true };
-        this.fc['user'].setErrors(combinationExist);
-        this.fc['user'].markAsTouched();
       });
     }
   }
@@ -73,13 +73,14 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('rememberUser', 'true');
           }
           this.router.navigateByUrl('/menu');
+        } else {
+          const destroy$: Subject<boolean> = new Subject<boolean>();
+          const dialogRef = this.modal.modalError('Error', 'Contraseña incorrecta', '35em');
+          dialogRef.componentInstance.primaryEvent?.pipe(takeUntil(destroy$)).subscribe((_) => {
+            dialogRef.close();
+          });
         }
       }, (error) => {
-        const destroy$: Subject<boolean> = new Subject<boolean>();
-        const dialogRef = this.modal.modalError('Error', 'Contraseña incorrecta', '35em');
-        dialogRef.componentInstance.primaryEvent?.pipe(takeUntil(destroy$)).subscribe((_) => {
-          dialogRef.close();
-        });
       });
     }
   }

@@ -130,6 +130,17 @@ mat-error {
 
 /* End mat dialog */
 
+/* Dropdowns */
+.cdk-overlay-pane {
+  transform: translateX(-4px) translateY(24px) !important;
+}
+
+.mat-select-panel {
+  min-width: calc(100% + 10px) !important;
+}
+
+/* End dropdowns */
+
 /* Form field */
 mat-form-field {
   font-size: 0.75em !important;
@@ -245,3 +256,9 @@ mat-form-field {
 }
 
 /* Fin checkbox */
+
+/* pager */
+.ngx-pagination{
+  margin: 0 !important;
+}
+/* End pager */

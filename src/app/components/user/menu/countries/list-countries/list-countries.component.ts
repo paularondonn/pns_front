@@ -48,6 +48,7 @@ export class ListCountriesComponent implements OnInit {
     this.countryService.listCountries().subscribe((resp) => {
       if (resp.data != null) {
         this.listCountry = resp.data;
+        setTimeout(() => this.positionPagination(), 100);
       } else {
         this.listCountry = [];
       }
@@ -91,14 +92,15 @@ export class ListCountriesComponent implements OnInit {
               dialogRefM.close();
               this.listCountries();
             });
+          } else {
+            if (resp.message === 'Nombre de país existente') {
+              const combinationExist = { combinationExist: true };
+              this.name.setErrors(combinationExist);
+              this.name.markAsTouched();
+            }
           }
         }, (error) => {
           dialogRef.close();
-          const dialogRefM = this.modal.modalError('Error', 'Volver a intentar', '35em');
-          dialogRefM.componentInstance.primaryEvent?.pipe(takeUntil(destroy$)).subscribe((_) => {
-            dialogRefM.close();
-            this.listCountries();
-          });
         });
       } else {
         this.name.markAsTouched();
@@ -121,5 +123,14 @@ export class ListCountriesComponent implements OnInit {
     let tm = $('#country_table').position().top - $('#tbl_country').position().top;
     let tr = $('tbody>tr').height();
     this.objItems.ShowItemsP(tm, tr);
+  }
+
+  /* Mensajes de error */
+  get CountryNameErrorMessage() {
+    if (this.name.hasError('required')) {
+      return 'Campo obligatorio: Ingresar información.';
+    } else {
+      return 'Error: Nombre de pais existente';
+    }
   }
 }
