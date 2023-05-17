@@ -34,7 +34,7 @@ export class InterceptorService implements HttpInterceptor {
     console.log(error)
     if (window.location.href.includes('menu')) {
       const destroy$: Subject<boolean> = new Subject<boolean>();
-      const dialogRefM = this.modal.modalError('Error', error.error.toLowerCase().message, '35em');
+      const dialogRefM = this.modal.modalError('Error', error.error.message, '35em');
       dialogRefM.componentInstance.primaryEvent?.pipe(takeUntil(destroy$)).subscribe((_) => {
         dialogRefM.close();
       });

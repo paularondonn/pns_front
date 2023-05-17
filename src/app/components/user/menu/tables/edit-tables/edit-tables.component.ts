@@ -37,7 +37,7 @@ export class EditTablesComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private router: Router, private actRoute: ActivatedRoute, private sedeService: HeadquartersService,
     private countryService: CountriesService, private cityService: CitiesService, private tableService: TablesService, private dialog: MatDialog) {
-    this.idTable = Number(this.actRoute.snapshot.params['id']);
+    this.idTable = this.actRoute.snapshot.params['id'];
     this.edit = !!this.idTable ? true : false;
   }
 
@@ -136,12 +136,12 @@ export class EditTablesComponent implements OnInit {
           this.router.navigate(['/menu', 'mesas']);
           dialogRef.close();
         });
-      } else {
-        if (resp.message === 'Nombre de mesa existente en sede seleccionada') {
-          const combinationExist = { combinationExist: true };
-          this.fc['name'].setErrors(combinationExist);
-          this.fc['name'].markAsTouched();
-        }
+      }
+    }, (error) => {
+      if (error.error.message === 'Nombre de mesa existente en sede seleccionada') {
+        const combinationExist = { combinationExist: true };
+        this.fc['name'].setErrors(combinationExist);
+        this.fc['name'].markAsTouched();
       }
     });
   }

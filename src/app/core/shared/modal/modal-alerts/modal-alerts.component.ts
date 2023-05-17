@@ -8,7 +8,7 @@ import { ModalData } from 'src/app/core/models/modal/modalData';
   templateUrl: './modal-alerts.component.html',
   styleUrls: ['./modal-alerts.component.scss']
 })
-export class ModalAlertsComponent implements OnInit {
+export class ModalAlertsComponent {
   title?: string;
   primaryInformation?: string;
   secondaryInformation?: string;
@@ -43,10 +43,6 @@ export class ModalAlertsComponent implements OnInit {
 
     this.primaryEvent = new EventEmitter<void>();
     this.secondaryEvent = new EventEmitter<void>();
-  }
-
-  ngOnInit(): void {
-    console.log();
   }
 
   close() {

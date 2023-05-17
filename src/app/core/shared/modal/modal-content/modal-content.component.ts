@@ -7,7 +7,7 @@ import { ModalData } from 'src/app/core/models/modal/modalData';
   templateUrl: './modal-content.component.html',
   styleUrls: ['./modal-content.component.scss']
 })
-export class ModalContentComponent implements OnInit {
+export class ModalContentComponent {
   content?: TemplateRef<any>;
   primaryButton?: string;
   secondaryButton?: string;
@@ -25,10 +25,6 @@ export class ModalContentComponent implements OnInit {
     this.border = data?.border;
     this.primaryEvent = new EventEmitter<void>();
     this.secondaryEvent = new EventEmitter<void>();
-  }
-
-  ngOnInit(): void {
-    console.log();
   }
 
   onScroll(event: Event) {

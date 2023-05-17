@@ -198,9 +198,9 @@ table {
 }
 
 thead > tr > th {
-  color: var(--dark-green);
+  color: var(--white);
   height: 2em;
-  background-color: var(--strong-light-cian);
+  background-color: var(--light-lilac);
   font-size: 1em;
 }
 

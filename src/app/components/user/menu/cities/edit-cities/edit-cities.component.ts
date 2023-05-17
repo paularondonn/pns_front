@@ -83,12 +83,12 @@ export class EditCitiesComponent implements OnInit {
           this.router.navigate(['/menu', 'ciudades']);
           dialogRef.close();
         });
-      } else {
-        if (resp.message === 'Nombre de ciudad existente') {
-          const combinationExist = { combinationExist: true };
-          this.fc['name'].setErrors(combinationExist);
-          this.fc['name'].markAsTouched();
-        }
+      }
+    }, (error) => {
+      if (error.error.message === 'Nombre de ciudad existente') {
+        const combinationExist = { combinationExist: true };
+        this.fc['name'].setErrors(combinationExist);
+        this.fc['name'].markAsTouched();
       }
     });
   }

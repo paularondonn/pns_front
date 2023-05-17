@@ -92,15 +92,13 @@ export class ListCountriesComponent implements OnInit {
               dialogRefM.close();
               this.listCountries();
             });
-          } else {
-            if (resp.message === 'Nombre de país existente') {
-              const combinationExist = { combinationExist: true };
-              this.name.setErrors(combinationExist);
-              this.name.markAsTouched();
-            }
           }
         }, (error) => {
-          dialogRef.close();
+          if (error.error.message == 'Nombre de país existente') {
+            const combinationExist = { combinationExist: true };
+            this.name.setErrors(combinationExist);
+            this.name.markAsTouched();
+          }
         });
       } else {
         this.name.markAsTouched();
