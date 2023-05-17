@@ -1,0 +1,57 @@
+<div class="container_card">
+  <h1 class="main_title">Recaudo</h1>
+
+  <div class="finder_container filters_container">
+    <div class="content_search input_filter">
+      <mat-form-field appearance="outline">
+        <input matInput type="text" name="filter" [(ngModel)]="filter" (keyup)="paginador=1" placeholder="Buscar"
+          class="inputSearch">
+        <i class="fa-solid fa-magnifying-glass iconSearch" matSuffix></i>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div>
+    <div id="tbl_pay">
+      <table class="mat-elevation-z8">
+        <thead>
+          <tr>
+            <th>Número de orden</th>
+            <th>Mesa</th>
+            <th>Total</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let item of listTable | paginate: {id:'pay_table', itemsPerPage: objItems.items, currentPage: paginador}">
+            <td>{{item.nameCountry}}</td>
+            <td>{{item.nameCity}}</td>
+            <td>{{item.nameHeadquarters}}</td>
+            <td class="actions">
+              <div class="content_select">
+                <div class="dots" (click)="OpenOp(item.id)">
+                  <i class="fa-solid fa-ellipsis actionsOptions"></i>
+                </div>
+                <div class="options mat-elevation-z2" [id]="'option' + item.id">
+                  <div class="content_options">
+                    <div class="option">
+                      <i class="fa-solid fa-magnifying-glass iconMenu"></i>
+                      <p class="item">Detalle</p>
+                    </div>
+                    <div class="option">
+                      <i class="fa-solid fa-check iconMenu"></i>
+                      <p class="item">Finalizar</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <pagination-controls class="my-pagination pagination" id="pay_table" (pageChange)="paginador = $event"
+      previousLabel="" nextLabel=""></pagination-controls>
+  </div>
+</div>

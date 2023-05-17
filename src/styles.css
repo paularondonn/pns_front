@@ -456,3 +456,95 @@ tbody > tr > td {
 }
 
 /* Fin modales */
+
+/* Menu desplegable */
+.actionsOptions {
+  color: var(--white);
+  font-size: 1.25em;
+  height: 100%;
+}
+
+.dots:hover {
+  background-color: var(--light-lilac);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.content_select {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+}
+
+.dots {
+  height: 1.25em;
+  width: 2.375em;
+  background: var(--soft-lilac);
+  border-radius: 0.25em;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.options {
+  display: none;
+  position: fixed;
+  background-color: white;
+  transform: translate(3.5em, 1.8em);
+  z-index: 3;
+  cursor: pointer;
+  border-radius: 0.375em;
+  width: 8em;
+  min-width: 9.875em;
+}
+
+.content_options {
+  padding: 0.875em;
+}
+
+.option {
+  display: flex;
+  color: black;
+  align-items: center;
+  text-align: left;
+  margin: 0 0 0.625em 0;
+  font-size: 0.8em;
+  overflow: hidden;
+  white-space: ellipsis;
+}
+
+.option:last-child {
+  margin: 0 !important;
+}
+
+.option:hover {
+  /*  color: #26BEC6; */
+  background-color: var(--light-lilac);
+  border-radius: 0.375em;
+}
+
+.options > .option:last-child {
+  border-bottom: none;
+}
+
+.item {
+  margin: 0 !important;
+}
+
+.iconMenu {
+  font-size: 1.3em;
+  margin-right: 0.5em;
+  color: var(--soft-lilac);
+}
+
+/* Fin menu despegable */

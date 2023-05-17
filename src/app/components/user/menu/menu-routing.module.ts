@@ -23,6 +23,21 @@ const routes: Routes = [
     path: 'mesas',
     component: MenuComponent,
     loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule),
+  },
+  {
+    path: 'ordenes',
+    component: MenuComponent,
+    loadChildren: () => import('./take-order/take-order.module').then(m => m.TakeOrderModule),
+  },
+  {
+    path: 'recaudo',
+    component: MenuComponent,
+    loadChildren: () => import('./pay/pay.module').then(m => m.PayModule),
+  },
+  {
+    path: 'reportes',
+    component: MenuComponent,
+    loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule),
   }
 ];
 
