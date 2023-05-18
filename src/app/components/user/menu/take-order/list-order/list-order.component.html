@@ -34,9 +34,9 @@
         <tbody>
           <tr
             *ngFor="let item of listTable | paginate: {id:'order_table', itemsPerPage: objItems.items, currentPage: paginador}">
-            <td>{{item.nameCountry}}</td>
-            <td>{{item.nameCity}}</td>
-            <td>{{item.nameHeadquarters}}</td>
+            <td class="item_name">{{item.idTakeOrder}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.totalValue}}</td>
             <td (click)="addEdit(item.id)">
               <i class="fa-solid fa-pen icon_edit"></i>
             </td>

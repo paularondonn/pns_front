@@ -44,13 +44,15 @@ export class Modal {
     return dialogRef;
   }
 
-  modalQuestion(msj: string, msj2?: string, widht?: string) {
+  modalQuestion(msj: string, msj2?: string, primaryButton?: string, secondaryButton?: string, widht?: string) {
     const destroy$: Subject<boolean> = new Subject<boolean>();
     /* Variables recibidas por el modal */
     let data: ModalData = {
       title: '',
       primaryInformation: msj,
       secondaryInformation: msj2,
+      primaryButton: primaryButton,
+      secondaryButton: secondaryButton,
       image: 'assets/img/modal/pregunta.png',
       color: ModalColor.purple,
       letterColor: ModalColor.white,

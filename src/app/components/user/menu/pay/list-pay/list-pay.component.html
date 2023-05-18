@@ -25,21 +25,21 @@
         <tbody>
           <tr
             *ngFor="let item of listTable | paginate: {id:'pay_table', itemsPerPage: objItems.items, currentPage: paginador}">
-            <td>{{item.nameCountry}}</td>
-            <td>{{item.nameCity}}</td>
-            <td>{{item.nameHeadquarters}}</td>
+            <td class="item_name">{{item.idTakeOrder}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.totalValue}}</td>
             <td class="actions">
               <div class="content_select">
-                <div class="dots" (click)="OpenOp(item.id)">
+                <div class="dots" (click)="OpenOp(item.idTakeOrder)">
                   <i class="fa-solid fa-ellipsis actionsOptions"></i>
                 </div>
-                <div class="options mat-elevation-z2" [id]="'option' + item.id">
+                <div class="options mat-elevation-z2" [id]="'option' + item.idTakeOrder">
                   <div class="content_options">
-                    <div class="option">
+                    <div class="option" (click)="detailOrders(item.idTakeOrder)">
                       <i class="fa-solid fa-magnifying-glass iconMenu"></i>
                       <p class="item">Detalle</p>
                     </div>
-                    <div class="option">
+                    <div *ngIf="item.paid" class="option" (click)="detailOrders(item.idTakeOrder, true, item)">
                       <i class="fa-solid fa-check iconMenu"></i>
                       <p class="item">Finalizar</p>
                     </div>
@@ -55,3 +55,39 @@
       previousLabel="" nextLabel=""></pagination-controls>
   </div>
 </div>
+
+
+<ng-template #detailOrder>
+  <h3 class="main_title">Orden N° {{listDetailOrder[0].idTakeOrder}} - Mesa {{listDetailOrder[0].nameTable}}</h3>
+  <div class="content_detailOrder">
+    <div>
+      <table class="mat-elevation-z8">
+        <thead>
+          <tr>
+            <th>Código de producto</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let item of listDetailOrder | paginate: {id:'detailPay_table', itemsPerPage: 4, currentPage: paginadorDetail}">
+            <td class="item_name">{{item.idProduct}}</td>
+            <td>{{item.nameProduct}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.totalValue}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <pagination-controls class="my-pagination pagination" id="detailPay_table" (pageChange)="paginadorDetail = $event"
+      previousLabel="" nextLabel=""></pagination-controls>
+  </div>
+
+  <div>
+    <div class="content_totalSale mat-elevation-z2">
+      <p class="dataInfoParagraphs">Total venta: {{listDetailOrder[0].totalValue}}</p>
+    </div>
+  </div>
+</ng-template>

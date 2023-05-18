@@ -349,6 +349,24 @@ tbody > tr > td {
 
 /* Fin iconos */
 
+/* Parrafos generales */
+.dataParagraphs {
+  color: var(--soft-gray) !important;
+  margin: 0 !important;
+  font-size: 0.85714em !important;
+  font-weight: 600 !important;
+}
+
+.dataInfoParagraphs {
+  color: var(--dark-gray) !important;
+  margin: 0 !important;
+  font-size: 0.85714em !important;
+  font-weight: 600 !important;
+}
+
+/* Fin parrafos generales */
+
+
 /* Paginador */
 .pagination {
   position: absolute;
