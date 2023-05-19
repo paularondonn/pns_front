@@ -4,6 +4,7 @@ import { CitiesPipe } from './cities/cities.pipe';
 import { CountriesPipe } from './countries/countries.pipe';
 import { TablesPipe } from './tables/tables.pipe';
 import { ProductsPipe } from './products/products.pipe';
+import { SuppliersPipe } from './suppliers/suppliers.pipe';
 
 
 
@@ -12,7 +13,8 @@ import { ProductsPipe } from './products/products.pipe';
     CitiesPipe,
     CountriesPipe,
     TablesPipe,
-    ProductsPipe
+    ProductsPipe,
+    SuppliersPipe
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { ProductsPipe } from './products/products.pipe';
     CitiesPipe,
     CountriesPipe,
     ProductsPipe,
+    SuppliersPipe,
     TablesPipe
   ]
 })

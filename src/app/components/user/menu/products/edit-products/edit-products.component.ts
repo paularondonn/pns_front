@@ -23,6 +23,8 @@ export class EditProductsComponent implements OnInit {
   form: FormGroup = this.fb.group({
     idSuppliers: ['', [Validators.required]],
     name: ['', [Validators.required]],
+    price: ['', [Validators.required]],
+    amount: ['', [Validators.required]],
   });
 
   /* Modales */
@@ -69,12 +71,12 @@ export class EditProductsComponent implements OnInit {
   }
 
   public cancel() {
-    this.router.navigate(['/menu', 'ciudades']);
+    this.router.navigate(['/menu', 'productos']);
   }
 
   public save() {
     let message: string = this.edit ? 'Producto actualizado con exito' : 'Producto creado con exito';
-    let data = { idProduct: this.idProduct, idSuppliers: this.fv.idSuppliers, name: this.fv.name }
+    let data = { idProduct: this.idProduct, idSuppliers: this.fv.idSuppliers, name: this.fv.name, price: this.fv.price, amount: this.fv.amount }
     this.productService.createUpdateProduct(data).subscribe((resp) => {
       if (resp.ok) {
         const destroy$: Subject<boolean> = new Subject<boolean>();

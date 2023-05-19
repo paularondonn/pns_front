@@ -2,18 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SuppliersRoutingModule } from './suppliers-routing.module';
-import { EditSuppliersComponent } from './edit-suppliers/edit-suppliers.component';
 import { ListSuppliersComponent } from './list-suppliers/list-suppliers.component';
+import { EditSuppliersComponent } from './edit-suppliers/edit-suppliers.component';
+import { ModulesModule } from 'src/app/core/modules/modules.module';
 
 
 @NgModule({
   declarations: [
-    EditSuppliersComponent,
-    ListSuppliersComponent
+    ListSuppliersComponent,
+    EditSuppliersComponent
   ],
   imports: [
     CommonModule,
-    SuppliersRoutingModule
+    SuppliersRoutingModule,
+    ModulesModule
   ]
 })
 export class SuppliersModule { }

@@ -1,1 +1,81 @@
-<p>list-suppliers works!</p>
+<div class="container_card">
+    <h1 class="main_title">Proveedores</h1>
+  
+  <div class="finder_container filters_container">
+    <div class="content_search input_filter">
+      <mat-form-field appearance="outline">
+        <input matInput type="text" name="filter" nit="filter" email="filter" telephone="filter" [(ngModel)]="filter" (keyup)="paginador=1" placeholder="Buscar"
+          class="inputSearch">
+        <i class="fa-solid fa-magnifying-glass iconSearch" matSuffix></i>
+      </mat-form-field>
+    </div>
+  
+    <div class="btn_group">
+      <div class="btn icon_add" (click)="addEdit()">
+        <div>
+          <span>Agregar</span>
+        </div>
+        <i class="fa-solid fa-plus icon"></i>
+      </div>
+    </div>
+  </div>
+  
+  <div id="tbl_country">
+    <table class="mat-elevation-z8">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nit</th>
+          <th>Nombre</th>
+          <th>E-mail</th>
+          <th>Telefono</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of listSupplier | suppliers:filter | paginate: {id:'supplier_table', itemsPerPage: objItems.items, currentPage: paginador}">
+          <td>{{item.idSupplier}}</td>
+          <td class="item_nit">{{item.nit}}</td>
+          <td class="item_name">{{item.name}}</td>
+          <td class="item_email">{{item.email}}</td>
+          <td class="item_telephone">{{item.telephone}}</td>
+          <td (click)="addEdit(item.idSupplier)">
+            <i class="fa-solid fa-pen icon_edit"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <pagination-controls class="my-pagination pagination" id="supplier_table" (pageChange)="paginador = $event"
+    previousLabel="" nextLabel=""></pagination-controls>
+  </div>
+  
+  <ng-template #createUpdateSupplier>
+    <h3 class="main_title">Proveedor</h3>
+    <div class="content_createUpdateSupplier">
+      <div>
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput type="text" [formControl]="name" placeholder="Nombre">
+          <mat-error *ngIf="name.invalid">{{SupplierNameErrorMessage}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nit</mat-label>
+            <input matInput type="text" [formControl]="nit" placeholder="nit">
+            <mat-error *ngIf="nit.invalid">{{SupplierNameErrorMessage}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>email</mat-label>
+            <input matInput type="text" [formControl]="email" placeholder="email">
+            <mat-error *ngIf="email.invalid">{{SupplierNameErrorMessage}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>telephone</mat-label>
+            <input matInput type="text" [formControl]="telephone" placeholder="telephone">
+            <mat-error *ngIf="telephone.invalid">{{SupplierNameErrorMessage}}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </ng-template>
+  

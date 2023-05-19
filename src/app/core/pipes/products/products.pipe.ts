@@ -11,9 +11,13 @@ export class ProductsPipe implements PipeTransform {
       for (const item of value) {
         if (item.idProduct == args) {
           result.push(item);
-        } else if (item.name.toLowerCase().indexOf(args.toLowerCase()) > -1) {
+        } else if (String(item.name).toLowerCase().indexOf(args.toLowerCase())>-1) {
           result.push(item);
-        } else if (item.countryName.toLowerCase().indexOf(args.toLowerCase()) > -1) {
+        } else if (String(item.price).toLowerCase().indexOf(args.toLowerCase())>-1) {
+          result.push(item);
+        } else if (String(item.amount).toLowerCase().indexOf(args.toLowerCase())>-1) {
+          result.push(item);
+        } else if (String(item.idSuppliers).toLowerCase().indexOf(args.toLowerCase())>-1) {
           result.push(item);
         }
       }
