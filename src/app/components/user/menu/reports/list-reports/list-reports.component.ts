@@ -77,6 +77,8 @@ export class ListReportsComponent implements OnInit {
         const nameReport = `reporte ${new Date().toLocaleDateString("es-CO")}.xlsx`;
         this.downloadReport(resp.data, nameReport);
       });
+    } else {
+      this.form.markAllAsTouched();
     }
   }
 
