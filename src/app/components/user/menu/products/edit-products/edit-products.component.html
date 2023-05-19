@@ -7,12 +7,12 @@
           <div>
             <mat-form-field>
               <mat-label>País</mat-label>
-              <mat-select formControlName="idCountry">
-                <mat-option *ngFor="let data of listCountry" [value]="data.idCountry">
+              <mat-select formControlName="idSupplier">
+                <mat-option *ngFor="let data of listSupplier" [value]="data.idSupplier">
                   {{data.name}}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="fc['idCountry'].invalid">Campo obligatorio: Ingresar información</mat-error>
+              <mat-error *ngIf="fc['idSupplier'].invalid">Campo obligatorio: Ingresar información</mat-error>
             </mat-form-field>
           </div>
   
@@ -20,7 +20,7 @@
             <mat-form-field>
               <mat-label>Nombre</mat-label>
               <input formControlName="name" matInput maxlength="100" required placeholder="Nombre">
-              <mat-error *ngIf="fc['name'].invalid">{{CityNameErrorMessage}}</mat-error>
+              <mat-error *ngIf="fc['name'].invalid">{{ProductNameErrorMessage}}</mat-error>
             </mat-form-field>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CitiesPipe } from './cities/cities.pipe';
 import { CountriesPipe } from './countries/countries.pipe';
 import { TablesPipe } from './tables/tables.pipe';
+import { ProductsPipe } from './products/products.pipe';
 
 
 
@@ -10,7 +11,8 @@ import { TablesPipe } from './tables/tables.pipe';
   declarations: [
     CitiesPipe,
     CountriesPipe,
-    TablesPipe
+    TablesPipe,
+    ProductsPipe
   ],
   imports: [
     CommonModule,
@@ -18,6 +20,7 @@ import { TablesPipe } from './tables/tables.pipe';
   exports: [
     CitiesPipe,
     CountriesPipe,
+    ProductsPipe,
     TablesPipe
   ]
 })
