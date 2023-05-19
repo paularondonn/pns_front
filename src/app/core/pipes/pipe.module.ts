@@ -6,6 +6,7 @@ import { TablesPipe } from './tables/tables.pipe';
 import { ProductsPipe } from './products/products.pipe';
 import { OrdersPipe } from './orders/orders.pipe';
 import { PayPipe } from './pay/pay.pipe';
+import { UsersPipe } from './users/users.pipe';
 
 
 
@@ -16,7 +17,8 @@ import { PayPipe } from './pay/pay.pipe';
     TablesPipe,
     ProductsPipe,
     OrdersPipe,
-    PayPipe
+    PayPipe,
+    UsersPipe
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { PayPipe } from './pay/pay.pipe';
     ProductsPipe,
     TablesPipe,
     OrdersPipe,
-    PayPipe
+    PayPipe,
+    UsersPipe
   ]
 })
 export class PipeModule { }

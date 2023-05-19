@@ -44,6 +44,11 @@ const routes: Routes = [
     component: MenuComponent,
     loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
   },
+  {
+    path: 'usuarios',
+    component: MenuComponent,
+    loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule),
+  }
 ];
 
 @NgModule({
