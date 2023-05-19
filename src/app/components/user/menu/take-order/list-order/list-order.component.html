@@ -33,11 +33,11 @@
         </thead>
         <tbody>
           <tr
-            *ngFor="let item of listTable | paginate: {id:'order_table', itemsPerPage: objItems.items, currentPage: paginador}">
+            *ngFor="let item of listTable | orders:filter | paginate: {id:'order_table', itemsPerPage: objItems.items, currentPage: paginador}">
             <td class="item_name">{{item.idTakeOrder}}</td>
             <td>{{item.name}}</td>
             <td>{{item.totalValue}}</td>
-            <td (click)="addEdit(item.id)">
+            <td (click)="addEdit(item.idTakeOrder)">
               <i class="fa-solid fa-pen icon_edit"></i>
             </td>
           </tr>
