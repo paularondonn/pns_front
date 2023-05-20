@@ -25,6 +25,7 @@ export class ListOrderComponent implements OnInit {
     this.listOrder();
   }
 
+  /* Función para listar ordenes */
   private listOrder() {
     this.orderService.listOrder().subscribe((resp) => {
       if (resp.data != null) {
@@ -36,6 +37,7 @@ export class ListOrderComponent implements OnInit {
     });
   }
 
+  /* Función para ir a la vista de agregar o editar orden */
   public addEdit(id: number = 0) {
     if (id > 0) {
       this.router.navigate(['/menu/ordenes', 'edit', id], { skipLocationChange: true });

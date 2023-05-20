@@ -8,6 +8,7 @@ export class Modal {
 
   constructor(private dialog: MatDialog) { }
 
+  /* Función que abre modal de tipo exitoso */
   modalSuccess(msj: string, msj2?: string, widht?: string) {
     const destroy$: Subject<boolean> = new Subject<boolean>();
     /* Variables recibidas por el modal */
@@ -26,6 +27,7 @@ export class Modal {
     return dialogRef;
   }
 
+  /* Función que abre modal de tipo informativo */
   modalInformative(msj: string, msj2?: string, widht?: string) {
     const destroy$: Subject<boolean> = new Subject<boolean>();
     /* Variables recibidas por el modal */
@@ -44,6 +46,7 @@ export class Modal {
     return dialogRef;
   }
 
+  /* Función que abre modal de tipo pregunta */
   modalQuestion(msj: string, msj2?: string, primaryButton?: string, secondaryButton?: string, widht?: string) {
     const destroy$: Subject<boolean> = new Subject<boolean>();
     /* Variables recibidas por el modal */
@@ -64,6 +67,7 @@ export class Modal {
     return dialogRef;
   }
 
+  /* Función que abre modal de tipo error */
   modalError(msj: string, msj2?: string, widht?: string) {
     const destroy$: Subject<boolean> = new Subject<boolean>();
     /* Variables recibidas por el modal */

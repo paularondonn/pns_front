@@ -25,6 +25,7 @@ export class ListUserComponent implements OnInit {
     this.listUsers();
   }
 
+  /* Función para listar usuarios */
   private listUsers() {
     this.userService.listUsers().subscribe((resp) => {
       if (resp.data != null) {
@@ -36,6 +37,7 @@ export class ListUserComponent implements OnInit {
     });
   }
 
+  /* Función para ir a la vista de agregar o editar usuarios */
   public addEdit(id: number = 0) {
     if (id > 0) {
       this.router.navigate(['/menu/usuarios', 'edit', id], { skipLocationChange: true });

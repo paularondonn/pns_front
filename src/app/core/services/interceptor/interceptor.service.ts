@@ -15,6 +15,7 @@ export class InterceptorService implements HttpInterceptor {
 
   constructor(private loaderService: LoaderService, private dialog: MatDialog) { }
 
+  /*  Manejo de peticiones */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let request = req;
 
@@ -30,6 +31,7 @@ export class InterceptorService implements HttpInterceptor {
       }));
   }
 
+  /* Manejo de errores, se saca una alerta */
   private alertError(error: HttpErrorResponse) {
     console.log(error)
     if (window.location.href.includes('menu')) {

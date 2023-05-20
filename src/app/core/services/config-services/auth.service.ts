@@ -13,6 +13,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private cs: ConfigService) { }
 
+  /* Servicio para validar inicio de sesión */
   login(name_user: string, password: string, id_headquarters: number): Observable<any> {
     const body = { name_user, password, id_headquarters }
     return this.http.post(`${this.cs.base}login`, body).pipe(
@@ -30,6 +31,7 @@ export class AuthService {
       }));
   }
 
+  /* Función para validar que se cree un token */
   isAuthenticate(): boolean {
     const token = sessionStorage.getItem('token');
     if (token != null && token != '') {
@@ -39,14 +41,17 @@ export class AuthService {
     }
   }
 
+  /* Servicio para consultar el menu del rol del usuario */
   menu(): Observable<any> {
     return this.http.get<any>(`${this.cs.base}menu/${Number(sessionStorage.getItem('idRole'))}`);
   }
 
+  /* Servicio para validar el nombre de usuario */
   validUserName(name_user: string): Observable<any> {
     return this.http.get<any>(`${this.cs.base}validUserName/${name_user}`);
   }
 
+  /* Función para cierre de sesión */
   logout(): boolean {
     const username = localStorage.getItem('username');
     const remember = localStorage.getItem('rememberUser');

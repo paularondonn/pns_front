@@ -64,6 +64,7 @@ export class EditOrderComponent implements OnInit {
     this.listProducts();
   }
 
+  /* Función para listar mesas */
   private listTables() {
     this.tableService.listTablesHeadquarters(Number(sessionStorage.getItem('idHeadquarters'))).subscribe((resp) => {
       if (resp.data != null) {
@@ -74,6 +75,7 @@ export class EditOrderComponent implements OnInit {
     });
   }
 
+  /* Función para listar productos */
   private listProducts() {
     this.productService.listProducts().subscribe((resp) => {
       if (resp.data != null) {
@@ -84,6 +86,7 @@ export class EditOrderComponent implements OnInit {
     });
   }
 
+  /* Función para consultar detalle de ordeb */
   private detailOrder() {
     if (this.edit) {
       this.orderService.detailOrder(this.idTakeOrder).subscribe((resp) => {
@@ -116,6 +119,7 @@ export class EditOrderComponent implements OnInit {
     }
   }
 
+  /* Función para agregar un producto */
   public addProduct(product?: any) {
     if (product.idProduct != '') {
       let dataProduct = { ...product, totalProduct: product.price, idOrderProduct: 0 };
@@ -139,6 +143,7 @@ export class EditOrderComponent implements OnInit {
     }
   }
 
+  /* Función para eliminar un producto */
   public removeProduct(product?: any) {
     if (product.idProduct != '') {
       const index = this.listDataProduct.findIndex((i: any) => i.idProduct == product.idProduct);
@@ -149,6 +154,7 @@ export class EditOrderComponent implements OnInit {
     }
   }
 
+  /* Función para sumar o restar cantidad de productos */
   public quantityProduct(id: number, sum: boolean) {
     const inputAmount = $('#amount' + id);
     let amount: number = Number(inputAmount.val());
@@ -167,6 +173,7 @@ export class EditOrderComponent implements OnInit {
     this.calculateTotal();
   }
 
+  /* Función para calcular el total de la orden */
   public calculateTotal() {
     this.totalValue = 0;
     this.listDataProduct.forEach((i: any) => {
@@ -174,10 +181,12 @@ export class EditOrderComponent implements OnInit {
     });
   }
 
+  /* Función para salir de la vista */
   public cancel() {
     this.router.navigate(['/menu', 'ordenes']);
   }
 
+  /* Función para guardar orden */
   public save() {
     if (this.form.valid && this.listDataProduct.length > 0) {
       let message: string = this.edit ? 'Ciudad actualizada con exito' : 'Ciudad creada con exito';
@@ -213,6 +222,7 @@ export class EditOrderComponent implements OnInit {
     }
   }
 
+  /* Función para guardar detalle de orden - productos */
   private saveProducts(idOrder: number) {
     if (idOrder > 0) {
       let idProduct: any = [];

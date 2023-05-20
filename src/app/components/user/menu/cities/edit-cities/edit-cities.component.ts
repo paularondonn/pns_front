@@ -49,6 +49,7 @@ export class EditCitiesComponent implements OnInit {
     return this.form.value;
   }
 
+  /* Función para listar paises */
   private listCountries() {
     this.countryService.listCountries().subscribe((resp) => {
       if (resp.data != null) {
@@ -59,6 +60,7 @@ export class EditCitiesComponent implements OnInit {
     });
   }
 
+  /* Función para consultar detalle de la ciudad */
   private detailCity() {
     if (this.edit) {
       this.cityService.consultCities(this.idCity).subscribe((resp) => {
@@ -68,10 +70,12 @@ export class EditCitiesComponent implements OnInit {
     }
   }
 
+  /* Función para salir de la vista */
   public cancel() {
     this.router.navigate(['/menu', 'ciudades']);
   }
 
+  /* Función para guardar/actualizar ciudad */
   public save() {
     let message: string = this.edit ? 'Ciudad actualizada con exito' : 'Ciudad creada con exito';
     let data = { idCity: this.idCity, idCountry: this.fv.idCountry, name: this.fv.name }

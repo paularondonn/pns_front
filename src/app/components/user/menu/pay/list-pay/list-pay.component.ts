@@ -39,6 +39,7 @@ export class ListPayComponent implements OnInit {
     this.listOrderPay();
   }
 
+  /* Función para listar ordenes */
   private listOrderPay() {
     this.payService.listOrdersPay().subscribe((resp) => {
       if (resp.data != null) {
@@ -70,6 +71,7 @@ export class ListPayComponent implements OnInit {
     });
   };
 
+  /* Función para consultar detalle de orden o finalizar orden */
   public detailOrders(id: number, finalize: boolean = false, dataOrder?: any) {
     this.orderService.detailOrder(id).subscribe((resp) => {
       if (resp.data != null) {

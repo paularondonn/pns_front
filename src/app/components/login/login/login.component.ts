@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
     return this.form.value;
   }
 
+  /* Función para validar el nombre de usuario */
   public Username() {
     if (this.fv.user != '' && this.fv.user != null) {
       this.userService.validUserName(this.fv.user).subscribe((resp) => {
@@ -66,6 +67,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  /* Función para validar el inicio de sesion */
   public login() {
     if (this.form.valid) {
       this.userService.login(this.fv.user, this.fv.password, this.fv.idHeadquarters).subscribe((resp) => {

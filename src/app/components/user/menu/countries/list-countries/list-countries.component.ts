@@ -44,6 +44,7 @@ export class ListCountriesComponent implements OnInit {
     this.listCountries();
   }
 
+  /* Función para listar paises */
   private listCountries() {
     this.countryService.listCountries().subscribe((resp) => {
       if (resp.data != null) {
@@ -55,6 +56,7 @@ export class ListCountriesComponent implements OnInit {
     });
   }
 
+  /* Función para agregar o editar pais */
   public addEdit(id: number = 0) {
     let message: string = '';
     if (id > 0) {

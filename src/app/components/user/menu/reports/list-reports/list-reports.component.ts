@@ -45,6 +45,7 @@ export class ListReportsComponent implements OnInit {
     return this.form.value;
   }
 
+  /* Función para detectar cambios del formulario */
   private changesForm() {
     this.fc['idReport'].valueChanges.subscribe((resp) => {
       this.fc['idSede'].setValue('');
@@ -55,6 +56,7 @@ export class ListReportsComponent implements OnInit {
     });
   }
 
+  /* Función para listar sedes */
   private listSede() {
     this.sedeService.listHeadquarters().subscribe((resp) => {
       if (resp.data != null) {
@@ -65,6 +67,7 @@ export class ListReportsComponent implements OnInit {
     });
   }
 
+  /* Función para generar reportes */
   public generateReport() {
     if (this.form.valid) {
       let data = {
@@ -82,6 +85,7 @@ export class ListReportsComponent implements OnInit {
     }
   }
 
+  /* Función para descargar reporte */
   private downloadReport(file: any, nameReport: string): void {
     const source = `data:application/xlsx;base64,${file}`;
     const link = document.createElement("a");

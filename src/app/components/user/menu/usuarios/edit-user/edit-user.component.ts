@@ -24,6 +24,7 @@ export class EditUserComponent implements OnInit {
   listCity: any = [];
   listRole: any = [];
 
+  /* Formulario */
   form: FormGroup = this.fb.group({
     idDocumentType: ['', [Validators.required]],
     documentNumber: ['', [Validators.required]],
@@ -70,6 +71,7 @@ export class EditUserComponent implements OnInit {
     this.listRoles();
   }
 
+  /* Función para listar tipos de documento */
   private listDocumentsType() {
     this.userService.listDocumentType().subscribe((resp) => {
       if (resp.data != null) {
@@ -80,6 +82,7 @@ export class EditUserComponent implements OnInit {
     });
   }
 
+  /* Función para listar paises */
   private listCountries() {
     this.countryService.listCountries().subscribe((resp) => {
       if (resp.data != null) {
@@ -90,6 +93,7 @@ export class EditUserComponent implements OnInit {
     });
   }
 
+  /* Función para listar ciudades */
   private listCities(idCountry: number) {
     this.cityService.consultCitiesCountry(idCountry).subscribe((resp) => {
       if (resp.data != null) {
@@ -100,6 +104,7 @@ export class EditUserComponent implements OnInit {
     });
   }
 
+  /* Función para listar roles */
   private listRoles() {
     this.userService.listRoles().subscribe((resp) => {
       if (resp.data != null) {
@@ -110,6 +115,7 @@ export class EditUserComponent implements OnInit {
     });
   }
 
+  /* Función para obtener cambios generados en el formulario */
   private changesForm() {
     this.fc['idCountry'].valueChanges.subscribe((resp) => {
       if (resp != '') {
@@ -123,6 +129,7 @@ export class EditUserComponent implements OnInit {
     }
   }
 
+  /* Función para consultar el detalle del usuario */
   private detailUser() {
     if (this.edit) {
       this.userService.consultUser(this.idUser).subscribe((resp) => {
@@ -139,10 +146,12 @@ export class EditUserComponent implements OnInit {
     }
   }
 
+  /* Función para salir de la vista */
   public cancel() {
     this.router.navigate(['/menu', 'usuarios']);
   }
 
+  /* Función para guardar/actualizar usuario */
   public save() {
     if (this.form.valid) {
       let data = {

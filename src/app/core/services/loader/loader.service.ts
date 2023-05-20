@@ -9,10 +9,12 @@ export class LoaderService {
 
   constructor() { }
 
+  /* Función para abrir cargador */
   show(): void {
     this.isLoading$.next(true);
   }
 
+  /* Función para cerrar cargador */
   hide(): void {
     this.isLoading$.next(false);
   }
