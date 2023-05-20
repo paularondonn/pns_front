@@ -9,6 +9,7 @@ export class ErrorService {
 
   constructor(private loaderService: LoaderService) { }
 
+  /* Manejo de errores */
   handleError(error: any) {
     this.loaderService.hide();
     if (error.rejection != undefined) {

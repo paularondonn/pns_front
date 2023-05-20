@@ -8,12 +8,14 @@ import { ModalData } from 'src/app/core/models/modal/modalData';
   styleUrls: ['./modal-content.component.scss']
 })
 export class ModalContentComponent {
+  /* Definición de variables */
   content?: TemplateRef<any>;
   primaryButton?: string;
   secondaryButton?: string;
   border?: boolean;
   permiso?: boolean;
 
+  /* Definición de eventos de salida */
   @Output() primaryEvent: EventEmitter<void>;
   @Output() secondaryEvent: EventEmitter<void>;
 
@@ -31,10 +33,12 @@ export class ModalContentComponent {
     const element = event.target as HTMLElement;
   }
 
+  /* Funcion para emitir cuando se da click en el segundo boton */
   second() {
     this.secondaryEvent?.emit();
   }
 
+  /* Funcion para emitir cuando se da click en el primer boton */
   primary() {
     this.primaryEvent?.emit();
   }

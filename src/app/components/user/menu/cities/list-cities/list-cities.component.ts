@@ -22,10 +22,11 @@ export class ListCitiesComponent implements OnInit {
   constructor(private cityService: CitiesService, private router: Router) { }
 
   ngOnInit(): void {
-    this.listCountries();
+    this.listCities();
   }
 
-  private listCountries() {
+  /* Función para listar ciudades */
+  private listCities() {
     this.cityService.listCities().subscribe((resp) => {
       if (resp.data != null) {
         this.listCity = resp.data;
@@ -36,6 +37,7 @@ export class ListCitiesComponent implements OnInit {
     });
   }
 
+  /* Función para ir a la vista de agregar/editar */
   public addEdit(id: number = 0) {
     if (id > 0) {
       this.router.navigate(['/menu/ciudades', 'edit', id], { skipLocationChange: true });

@@ -15,6 +15,7 @@ export class InterceptorService implements HttpInterceptor {
 
   constructor(private loaderService: LoaderService, private dialog: MatDialog) { }
 
+  /*  Manejo de peticiones */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let request = req;
 
@@ -30,11 +31,12 @@ export class InterceptorService implements HttpInterceptor {
       }));
   }
 
+  /* Manejo de errores, se saca una alerta */
   private alertError(error: HttpErrorResponse) {
     console.log(error)
     if (window.location.href.includes('menu')) {
       const destroy$: Subject<boolean> = new Subject<boolean>();
-      const dialogRefM = this.modal.modalError('Error', error.error.message, '35em');
+      const dialogRefM = this.modal.modalError('Error', error.error.message != undefined ? error.error.message : error.message, '35em');
       dialogRefM.componentInstance.primaryEvent?.pipe(takeUntil(destroy$)).subscribe((_) => {
         dialogRefM.close();
       });

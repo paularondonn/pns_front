@@ -1,14 +1,14 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemsPaginador } from 'src/app/core/globals/paginador/ItemsPaginador';
-import { OrdersService } from 'src/app/core/services/orders/orders.service';
+import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
-  selector: 'app-list-order',
-  templateUrl: './list-order.component.html',
-  styleUrls: ['./list-order.component.scss']
+  selector: 'app-list-user',
+  templateUrl: './list-user.component.html',
+  styleUrls: ['./list-user.component.scss']
 })
-export class ListOrderComponent implements OnInit {
+export class ListUserComponent implements OnInit {
   /* Paginador */
   paginador: number = 1;
   objItems: ItemsPaginador = new ItemsPaginador();
@@ -17,32 +17,32 @@ export class ListOrderComponent implements OnInit {
   filter: string = '';
 
   /* Listas */
-  listTable: any = [];
+  listUser: any = [];
 
-  constructor(private router: Router, private orderService: OrdersService) { }
+  constructor(private userService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
-    this.listOrder();
+    this.listUsers();
   }
 
-  /* Función para listar ordenes */
-  private listOrder() {
-    this.orderService.listOrder().subscribe((resp) => {
+  /* Función para listar usuarios */
+  private listUsers() {
+    this.userService.listUsers().subscribe((resp) => {
       if (resp.data != null) {
-        this.listTable = resp.data;
+        this.listUser = resp.data;
         setTimeout(() => this.positionPagination(), 100);
       } else {
-        this.listTable = [];
+        this.listUser = [];
       }
     });
   }
 
-  /* Función para ir a la vista de agregar o editar orden */
+  /* Función para ir a la vista de agregar o editar usuarios */
   public addEdit(id: number = 0) {
     if (id > 0) {
-      this.router.navigate(['/menu/ordenes', 'edit', id], { skipLocationChange: true });
+      this.router.navigate(['/menu/usuarios', 'edit', id], { skipLocationChange: true });
     } else {
-      this.router.navigate(['/menu/ordenes', 'add'], { skipLocationChange: true });
+      this.router.navigate(['/menu/usuarios', 'add'], { skipLocationChange: true });
     }
   }
 
@@ -54,8 +54,9 @@ export class ListOrderComponent implements OnInit {
 
   /* Función tamaño tabla */
   private positionPagination() {
-    let tm = $('#order_table').position().top - $('#tbl_order').position().top;
+    let tm = $('#user_table').position().top - $('#tbl_user').position().top;
     let tr = $('tbody>tr').height();
     this.objItems.ShowItemsP(tm, tr);
   }
 }
+

@@ -4,7 +4,13 @@ import { CitiesPipe } from './cities/cities.pipe';
 import { CountriesPipe } from './countries/countries.pipe';
 import { TablesPipe } from './tables/tables.pipe';
 import { ProductsPipe } from './products/products.pipe';
+
 import { SuppliersPipe } from './suppliers/suppliers.pipe';
+
+import { OrdersPipe } from './orders/orders.pipe';
+import { PayPipe } from './pay/pay.pipe';
+import { UsersPipe } from './users/users.pipe';
+
 
 
 
@@ -14,7 +20,10 @@ import { SuppliersPipe } from './suppliers/suppliers.pipe';
     CountriesPipe,
     TablesPipe,
     ProductsPipe,
-    SuppliersPipe
+    SuppliersPipe,
+    OrdersPipe,
+    PayPipe,
+    UsersPipe
   ],
   imports: [
     CommonModule,
@@ -24,7 +33,10 @@ import { SuppliersPipe } from './suppliers/suppliers.pipe';
     CountriesPipe,
     ProductsPipe,
     SuppliersPipe,
-    TablesPipe
+    TablesPipe,
+    OrdersPipe,
+    PayPipe,
+    UsersPipe
   ]
 })
 export class PipeModule { }

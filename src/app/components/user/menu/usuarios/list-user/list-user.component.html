@@ -1,5 +1,5 @@
 <div class="container_card">
-  <h1 class="main_title">Tomar orden</h1>
+  <h1 class="main_title">Usuarios</h1>
 
   <div class="finder_container filters_container">
     <div class="content_search input_filter">
@@ -21,30 +21,32 @@
   </div>
 
   <div>
-    <div id="tbl_order">
+    <div id="tbl_user">
       <table class="mat-elevation-z8">
         <thead>
           <tr>
-            <th>Número de orden</th>
-            <th>Mesa</th>
-            <th>Total</th>
+            <th>Documento</th>
+            <th>Nombre</th>
+            <th>Nombre de usuario</th>
+            <th>Rol</th>
             <th>Editar</th>
           </tr>
         </thead>
         <tbody>
           <tr
-            *ngFor="let item of listTable | orders:filter | paginate: {id:'order_table', itemsPerPage: objItems.items, currentPage: paginador}">
-            <td class="item_name">{{item.idTakeOrder}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.totalValue}}</td>
-            <td (click)="addEdit(item.idTakeOrder)">
+            *ngFor="let item of listUser | users: filter | paginate: {id:'user_table', itemsPerPage: objItems.items, currentPage: paginador}">
+            <td>{{item.prefix + ' - ' + item.documentNumber}}</td>
+            <td class="item_name">{{item.names + ' ' + item.surnames}}</td>
+            <td class="item_name">{{item.nameUser}}</td>
+            <td class="item_name">{{item.nameRole}}</td>
+            <td (click)="addEdit(item.idUser)">
               <i class="fa-solid fa-pen icon_edit"></i>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <pagination-controls class="my-pagination pagination" id="order_table" (pageChange)="paginador = $event"
+    <pagination-controls class="my-pagination pagination" id="user_table" (pageChange)="paginador = $event"
       previousLabel="" nextLabel=""></pagination-controls>
   </div>
 </div>

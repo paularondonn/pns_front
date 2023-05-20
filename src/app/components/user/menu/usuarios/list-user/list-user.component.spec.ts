@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FinishPayComponent } from './finish-pay.component';
+import { ListUserComponent } from './list-user.component';
 
-describe('FinishPayComponent', () => {
-  let component: FinishPayComponent;
-  let fixture: ComponentFixture<FinishPayComponent>;
+describe('ListUserComponent', () => {
+  let component: ListUserComponent;
+  let fixture: ComponentFixture<ListUserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FinishPayComponent ]
+      declarations: [ ListUserComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FinishPayComponent);
+    fixture = TestBed.createComponent(ListUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
