@@ -68,6 +68,8 @@ export class EditProductsComponent implements OnInit {
       this.productService.consultProducts(this.idProduct).subscribe((resp) => {
         this.fc['idSupplier'].setValue(resp.data.idSupplier);
         this.fc['name'].setValue(resp.data.name);
+        this.fc['price'].setValue(resp.data.price);
+        this.fc['amount'].setValue(resp.data.amount);
       });
     }
   }
