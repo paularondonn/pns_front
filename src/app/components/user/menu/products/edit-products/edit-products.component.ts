@@ -21,7 +21,7 @@ export class EditProductsComponent implements OnInit {
   listSupplier: any = [];
 
   form: FormGroup = this.fb.group({
-    idSuppliers: ['', [Validators.required]],
+    idSupplier: ['', [Validators.required]],
     name: ['', [Validators.required]],
     price: ['', [Validators.required]],
     amount: ['', [Validators.required]],
@@ -54,7 +54,7 @@ export class EditProductsComponent implements OnInit {
   private listSuppliers() {
     this.suppliersService.listSuppliers().subscribe((resp) => {
       if (resp.data != null) {
-        this.listSupplier = [{ idSuppliers: '', name: 'Seleccione una opción' }, ...resp.data];
+        this.listSupplier = [{ idSupplier: '', name: 'Seleccione una opción' }, ...resp.data];
       } else {
         this.listSupplier = [];
       }
@@ -64,7 +64,7 @@ export class EditProductsComponent implements OnInit {
   private detailProduct() {
     if (this.edit) {
       this.productService.consultProducts(this.idProduct).subscribe((resp) => {
-        this.fc['idSuppliers'].setValue(resp.data.idSuppliers);
+        this.fc['idSupplier'].setValue(resp.data.idSupplier);
         this.fc['name'].setValue(resp.data.name);
       });
     }
@@ -76,7 +76,7 @@ export class EditProductsComponent implements OnInit {
 
   public save() {
     let message: string = this.edit ? 'Producto actualizado con exito' : 'Producto creado con exito';
-    let data = { idProduct: this.idProduct, idSuppliers: this.fv.idSuppliers, name: this.fv.name, price: this.fv.price, amount: this.fv.amount }
+    let data = { idProduct: this.edit ? Number(this.idProduct) : 0, idSupplier: this.fv.idSupplier, name: this.fv.name, price: this.fv.price, amount: this.fv.amount }
     this.productService.createUpdateProduct(data).subscribe((resp) => {
       if (resp.ok) {
         const destroy$: Subject<boolean> = new Subject<boolean>();

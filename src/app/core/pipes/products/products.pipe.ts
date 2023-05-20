@@ -17,7 +17,7 @@ export class ProductsPipe implements PipeTransform {
           result.push(item);
         } else if (String(item.amount).toLowerCase().indexOf(args.toLowerCase())>-1) {
           result.push(item);
-        } else if (String(item.idSuppliers).toLowerCase().indexOf(args.toLowerCase())>-1) {
+        } else if (String(item.idSupplier).toLowerCase().indexOf(args.toLowerCase())>-1) {
           result.push(item);
         }
       }
