@@ -5,6 +5,7 @@ import { environment } from '../../../../environments/environment.prod'
   providedIn: 'root'
 })
 export class ConfigService {
+  /* Definición de variable para tomar el apuntamiento */
   base = environment.api;
 
   constructor() { }

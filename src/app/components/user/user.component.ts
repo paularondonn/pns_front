@@ -43,10 +43,7 @@ export class UserComponent implements OnInit, AfterContentInit {
   iconTooltip: boolean = false;
 
   constructor(private breakpointObserver: BreakpointObserver, public router: Router, private autService: AuthService) {
-    this.menuModule();
     this.autService.system.emit(true);
-    this.url = this.router.url.split('menu/');
-    this.url = this.url[1];
   }
 
   ngAfterContentInit(): void {
@@ -55,18 +52,30 @@ export class UserComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit(): void {
-    console.log()
+    this.menuModule();
+    this.url = this.router.url.split('menu/');
+    this.url = this.url[1];
   }
 
+  /* Metodo para realizar filtro por menu */
   public filtroMenu() {
+    this.menu.forEach((element: any) => {
+      if ((element.name).toLocaleLowerCase() == this.filter.toLocaleLowerCase()) {
+        this.menus = [element];
+      }
+    });
+
+    if (this.filter == "" || this.filter == null || this.filter == undefined) {
+      this.menus = JSON.parse(sessionStorage.getItem('modules') || '{}');
+    }
   }
 
   routerMenu() {
     this.router.navigate(['/menu']);
   }
 
+  /* Metodo para obtener el listado del menu */
   async menuModule() {
-    console.log('entra')
     if (sessionStorage.getItem('modules') == null) {
       await this.autService.menu().subscribe(resp => {
         sessionStorage.setItem("modules", JSON.stringify(resp.data.menu));
@@ -90,37 +99,21 @@ export class UserComponent implements OnInit, AfterContentInit {
     }
   }
 
-  recargar(id: string) {
-    const ruta = document.getElementById(id) as HTMLLinkElement;
-    if (ruta.style.color == 'white') {
-      window.location.reload();
-    }
-  }
-
+  /* Metodo para activar menu */
   public active(id: number) {
-    /* const ids = [id];
-    sessionStorage.setItem('itemActive', JSON.stringify(ids));
-    const sbb = id != '' ? document.getElementById('sbbb' + id + idP + idPp + idA) as HTMLLinkElement : idPp == '' ?
-      document.getElementById('sb' + id + idP) as HTMLLinkElement : document.getElementById('sbb' + id + idP + idPp) as HTMLLinkElement;
-
+    sessionStorage.setItem('itemActive', JSON.stringify(id));
+    const module = $('#module' + id);
     this.menus.forEach((element: any) => {
-      if (idPp == '' && idA == '') {
-        if (element.idMenu == id) {
-          sbb.style.color = 'white';
-          sbb.style.textDecorationLine = 'underline';
-          $('#cm' + id).addClass('activeModule');
-          setTimeout(() => { this.Expandable = false; }, 200);
-        } else {
-          const Nsb = document.getElementById('m' + element.idMenu) as HTMLLinkElement;
-          Nsbb.style.maxHeight = '0';
-          Nsbb.style.minHeight = '0';
-          Nsbb.style.opacity = '0';
-          Nsb.style.color = 'rgba(255,255,255,.7)';
-          Nsb.style.color = 'rgba(255,255,255,.7)';
-          Nsb.style.textDecorationLine = 'none';
-        }
+      if (element.idMenu === id) {
+        module.addClass('activeMenu');
+        $('#cm' + id).addClass('activeModule');
+        setTimeout(() => { this.Expandable = false; }, 200);
+      } else {
+        const Nsb = $('#module' + element.idMenu);
+        Nsb.removeClass('activeMenu');
+        $('#cm' + element.idMenu).removeClass('activeModule');
       }
-    }); */
+    });
   }
 
   /* Metodo para mostrar tooltip */
@@ -147,7 +140,7 @@ export class UserComponent implements OnInit, AfterContentInit {
     if (this.autService.logout()) {
       window.location.reload();
     }
-   }
+  }
 
   /* Metodo para calcular el tamaño de la carta */
   layout() {
@@ -161,13 +154,13 @@ export class UserComponent implements OnInit, AfterContentInit {
     separador.css('height', `calc(${height}px - calc(${separador.css('padding')} + ${separador.css('padding')}))`);
     carta.css('height', `calc(${separador.height()}px - calc(${carta.css('padding')} + ${carta.css('padding')}))`);
     info.css('height', `${carta.height()}px`);
-    console.log(carta.height())
   }
 
   public calculateMenu() {
     setTimeout(() => { this.menuLayout(); }, 100);
   }
 
+  /* Metodo para realizar calculo del layout */
   public menuLayout() {
     let sidenav = $('#sidenav');
     /* Menu comprimido */

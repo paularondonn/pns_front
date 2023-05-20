@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule)
   },
   {
-    path: 'menu',
+    path: '',
     loadChildren: () => import('./components/user/user.module').then(m => m.UserModule),
     canActivate: [AuthUserGuard]
   },

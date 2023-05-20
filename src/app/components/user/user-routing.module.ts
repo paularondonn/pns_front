@@ -6,25 +6,11 @@ import { LoginComponent } from '../login/login/login.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path:'menu',
     component: UserComponent,
+    loadChildren:()=>import('./menu/menu.module').then(m=>m.MenuModule),
     canActivateChild: [SecurityGuard]
-  },
-  {
-    path: 'usuarios',
-    component: UserComponent,
-    /* loadChildren: () => import('./components/user/user.module').then(m => m.UserModule), */
-  },
-  {
-    path: 'paises',
-    component: UserComponent,
-    loadChildren: () => import('./countries/countries.module').then(m => m.CountriesModule),
-  },
-  {
-    path: 'ciudades',
-    component: UserComponent,
-    loadChildren: () => import('./cities/cities.module').then(m => m.CitiesModule),
-  },
+  }
 ];
 
 @NgModule({

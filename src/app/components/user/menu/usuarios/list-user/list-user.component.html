@@ -1,0 +1,52 @@
+<div class="container_card">
+  <h1 class="main_title">Usuarios</h1>
+
+  <div class="finder_container filters_container">
+    <div class="content_search input_filter">
+      <mat-form-field appearance="outline">
+        <input matInput type="text" name="filter" [(ngModel)]="filter" (keyup)="paginador=1" placeholder="Buscar"
+          class="inputSearch">
+        <i class="fa-solid fa-magnifying-glass iconSearch" matSuffix></i>
+      </mat-form-field>
+    </div>
+
+    <div class="btn_group">
+      <div class="btn icon_add" (click)="addEdit()">
+        <div>
+          <span>Agregar</span>
+        </div>
+        <i class="fa-solid fa-plus icon"></i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div id="tbl_user">
+      <table class="mat-elevation-z8">
+        <thead>
+          <tr>
+            <th>Documento</th>
+            <th>Nombre</th>
+            <th>Nombre de usuario</th>
+            <th>Rol</th>
+            <th>Editar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let item of listUser | users: filter | paginate: {id:'user_table', itemsPerPage: objItems.items, currentPage: paginador}">
+            <td>{{item.prefix + ' - ' + item.documentNumber}}</td>
+            <td class="item_name">{{item.names + ' ' + item.surnames}}</td>
+            <td class="item_name">{{item.nameUser}}</td>
+            <td class="item_name">{{item.nameRole}}</td>
+            <td (click)="addEdit(item.idUser)">
+              <i class="fa-solid fa-pen icon_edit"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <pagination-controls class="my-pagination pagination" id="user_table" (pageChange)="paginador = $event"
+      previousLabel="" nextLabel=""></pagination-controls>
+  </div>
+</div>

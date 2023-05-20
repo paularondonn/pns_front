@@ -1,0 +1,56 @@
+<div class="container_card">
+  <h1 class="main_title">Reportes</h1>
+
+  <div>
+    <form [formGroup]="form">
+      <div class="container_formReports">
+        <div>
+          <mat-form-field>
+            <mat-label>Reporte</mat-label>
+            <mat-select formControlName="idReport">
+              <mat-option *ngFor="let data of listReports" [value]="data.id">
+                {{data.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="fc['idReport'].invalid">Campo obligatorio: Ingresar información</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="fv.idReport === 4">
+          <mat-form-field>
+            <mat-label>Sede</mat-label>
+            <mat-select formControlName="idSede">
+              <mat-option *ngFor="let data of listSedes" [value]="data.idHeadquarters">
+                {{data.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="fc['idSede'].invalid">Campo obligatorio: Ingresar información</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Fecha inicial - Fecha final</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate formControlName="initialDate" placeholder="Fecha inicial">
+              <input matEndDate formControlName="finalDate" placeholder="Fecha final">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+            <mat-error *ngIf="fc['initialDate'].invalid">Campo obligatorio: Ingresar información</mat-error>
+            <mat-error *ngIf="fc['finalDate'].invalid">Campo obligatorio: Ingresar información</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="btn_group" [ngClass]="{'btn_groupTwo': fv.idReport !== 4}">
+          <div class="btn icon_add" (click)="generateReport()">
+            <div>
+              <span>Generar</span>
+            </div>
+            <i class="fa-solid fa-magnifying-glass icon"></i>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+<div class="container_card">
+  <h2 class="main_title">Usuarios - {{edit ? 'Editar' : 'Agregar'}}</h2>
+
+  <div class="container_users scroll_container">
+    <form [formGroup]="form">
+      <div class="container_formUsers">
+        <div>
+          <mat-form-field>
+            <mat-label>Tipo de documento</mat-label>
+            <mat-select formControlName="idDocumentType">
+              <mat-option *ngFor="let data of listDocumentType" [value]="data.idDocumentType">
+                {{data.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="fc['idDocumentType'].invalid">{{TypeDocumentErrorMessage}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Número de documento</mat-label>
+            <input formControlName="documentNumber" matInput maxlength="100" required placeholder="Número de documento">
+            <mat-error *ngIf="fc['documentNumber'].invalid">{{DocumentErrorMessage}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Nombres</mat-label>
+            <input formControlName="names" matInput maxlength="100" required placeholder="Nombres">
+            <mat-error *ngIf="fc['names'].invalid">Campo obligatorio: Ingresar información</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Apellidos</mat-label>
+            <input formControlName="surnames" matInput maxlength="100" required placeholder="Apellidos">
+            <mat-error *ngIf="fc['surnames'].invalid">Campo obligatorio: Ingresar información</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Nombre de usuario</mat-label>
+            <input formControlName="nameUser" matInput maxlength="100" required placeholder="Nombre de usuario">
+            <mat-error *ngIf="fc['nameUser'].invalid">{{NameUserErrorMessage}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div id="eye">
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input formControlName="password" placeholder="Contraseña" [type]="hide ? 'password' : 'text'" matInput
+              type="password">
+            <button mat-icon-button matSuffix type="button" color='primary' (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <i [ngClass]="{'fa fa-eye-slash':hide, 'fa-solid fa-eye':!hide}"></i>
+            </button>
+            <mat-error *ngIf="fc['password'].invalid">Campo obligatorio: Ingresar información</mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field>
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input formControlName="birthDate" matInput [matDatepicker]="picker" required placeholder="Fecha">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <div>
+          <mat-form-field>
+            <mat-label>País</mat-label>
+            <mat-select formControlName="idCountry">
+              <mat-option *ngFor="let data of listCountry" [value]="data.idCountry">
+                {{data.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="fc['idCountry'].invalid">Campo obligatorio: Ingresar información</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Ciudad</mat-label>
+            <mat-select formControlName="idCity">
+              <mat-option *ngFor="let data of listCity" [value]="data.idCity">
+                {{data.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="fc['idCity'].invalid">Campo obligatorio: Ingresar información</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Rol</mat-label>
+            <mat-select formControlName="idRole">
+              <mat-option *ngFor="let data of listRole" [value]="data.idRole">
+                {{data.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="fc['idRole'].invalid">Campo obligatorio: Ingresar información</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="container_buttons">
+    <button class="button cancel" type="button" (click)="cancel()">Cancelar</button>
+    <button class="button accept" color="primary" type="button"
+      (click)="save()">{{edit?'Actualizar':'Guardar'}}</button>
+  </div>
+</div>

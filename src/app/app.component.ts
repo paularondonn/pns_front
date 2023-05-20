@@ -21,7 +21,7 @@ export class AppComponent {
   lastPing: Date | undefined;
 
   constructor(private idle: Idle, private keepalive: Keepalive, private autService: AuthService, private dialog: MatDialog) {
-    idle.setIdle(100);
+    idle.setIdle(18000);
     // sets a timeout period of 300 seconds. 5 min
     idle.setTimeout(10);
     // sets the default interrupts, in this case, things like clicks, scrolls, touches to the document
@@ -46,7 +46,7 @@ export class AppComponent {
 
     idle.onIdleStart.subscribe(() => {
       this.idleState = "You've gone idle!";
-      console.log("te queda poco tiempo!")
+      /* console.log("te queda poco tiempo!") */
     });
 
     idle.onTimeoutWarning.subscribe((countdown: string) => {

@@ -1,0 +1,52 @@
+<div class="container_card">
+  <h1 class="main_title">Mesas</h1>
+
+  <div class="finder_container filters_container">
+    <div class="content_search input_filter">
+      <mat-form-field appearance="outline">
+        <input matInput type="text" name="filter" [(ngModel)]="filter" (keyup)="paginador=1" placeholder="Buscar"
+          class="inputSearch">
+        <i class="fa-solid fa-magnifying-glass iconSearch" matSuffix></i>
+      </mat-form-field>
+    </div>
+
+    <div class="btn_group">
+      <div class="btn icon_add" (click)="addEdit()">
+        <div>
+          <span>Agregar</span>
+        </div>
+        <i class="fa-solid fa-plus icon"></i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div id="tbl_mesa">
+      <table class="mat-elevation-z8">
+        <thead>
+          <tr>
+            <th>País</th>
+            <th>Ciudad</th>
+            <th>Sede</th>
+            <th>Nombre</th>
+            <th>Editar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let item of listTable | tables: filter | paginate: {id:'mesa_table', itemsPerPage: objItems.items, currentPage: paginador}">
+            <td>{{item.nameCountry}}</td>
+            <td>{{item.nameCity}}</td>
+            <td>{{item.nameHeadquarters}}</td>
+            <td class="item_name">{{item.name}}</td>
+            <td (click)="addEdit(item.idTable)">
+              <i class="fa-solid fa-pen icon_edit"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <pagination-controls class="my-pagination pagination" id="mesa_table" (pageChange)="paginador = $event"
+      previousLabel="" nextLabel=""></pagination-controls>
+  </div>
+</div>

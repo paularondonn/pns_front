@@ -6,7 +6,7 @@
       <mat-form-field appearance="outline">
         <mat-label>Usuario</mat-label>
         <input placeholder="Nombre de usuario" formControlName="user" matInput type="text" required autocomplete="off"
-          (keyup)="Username()">
+          (change)="Username()">
         <mat-error *ngIf="fc['user'].invalid">{{UsernameErrorMessage}}</mat-error>
       </mat-form-field>
     </div>
@@ -20,7 +20,7 @@
           [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <i [ngClass]="{'fa fa-eye-slash':hide, 'fa-solid fa-eye':!hide}"></i>
         </button>
-        <mat-error *ngIf="fc['password'].invalid">Campo obligatorio: Ingresar información.</mat-error>
+        <mat-error *ngIf="fc['password'].invalid">{{PasswordErrorMessage}}</mat-error>
       </mat-form-field>
     </div>
 

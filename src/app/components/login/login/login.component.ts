@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
     return this.form.value;
   }
 
+  /* Función para validar el nombre de usuario */
   public Username() {
     if (this.fv.user != '' && this.fv.user != null) {
       this.userService.validUserName(this.fv.user).subscribe((resp) => {
@@ -56,14 +57,17 @@ export class LoginComponent implements OnInit {
           }
         }
       }, (error) => {
-        console.log('entraaa')
-        const combinationExist = { combinationExist: true };
-        this.fc['user'].setErrors(combinationExist);
-        this.fc['user'].markAsTouched();
+        if (error.error.message == "user name not found" || error.error.message == "Nombre de usuario no encontrado") {
+          const combinationExist = { combinationExist: true };
+          this.fc['user'].setErrors(combinationExist);
+          this.fc['user'].markAsTouched();
+        }
+        this.headquarters = [];
       });
     }
   }
 
+  /* Función para validar el inicio de sesion */
   public login() {
     if (this.form.valid) {
       this.userService.login(this.fv.user, this.fv.password, this.fv.idHeadquarters).subscribe((resp) => {
@@ -76,7 +80,10 @@ export class LoginComponent implements OnInit {
         }
       }, (error) => {
         const destroy$: Subject<boolean> = new Subject<boolean>();
-        const dialogRef = this.modal.modalError('Error', 'Contraseña incorrecta', '35em');
+        const combinationExist = { combinationExist: true };
+        this.fc['password'].setErrors(combinationExist);
+        this.fc['password'].markAsTouched();
+        const dialogRef = this.modal.modalError('Error', 'Contraseña incorrecta, por favor intetar de nuevo', '35em');
         dialogRef.componentInstance.primaryEvent?.pipe(takeUntil(destroy$)).subscribe((_) => {
           dialogRef.close();
         });
@@ -90,6 +97,14 @@ export class LoginComponent implements OnInit {
       return 'Campo obligatorio: Ingresar información.';
     } else {
       return 'Error: Usuario no encontrado';
+    }
+  }
+
+  get PasswordErrorMessage() {
+    if (this.fc['password'].hasError('required')) {
+      return 'Campo obligatorio: Ingresar contraseña.';
+    } else {
+      return 'Error: Contraseña incorrecta';
     }
   }
 }

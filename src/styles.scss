@@ -130,6 +130,17 @@ mat-error {
 
 /* End mat dialog */
 
+/* Dropdowns */
+.cdk-overlay-pane {
+  transform: translateX(-4px) translateY(24px) !important;
+}
+
+.mat-select-panel {
+  min-width: calc(100% + 10px) !important;
+}
+
+/* End dropdowns */
+
 /* Form field */
 mat-form-field {
   font-size: 0.75em !important;
@@ -219,6 +230,101 @@ mat-form-field {
 
 /* End form field */
 
+/* Dates */
+.mat-datepicker-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.mat-datepicker-content .mat-calendar {
+  width: auto !important;
+  height: auto !important;
+  overflow: hidden !important;
+}
+
+.mat-date-range-input-container {
+  display: flex !important;
+  align-items: normal !important;
+}
+
+mat-dialog-actions {
+  margin: 0 !important;
+  min-height: 24px !important;
+}
+
+.mat-datepicker-toggle>button {
+  height: 1.5em !important;
+  width: 1.5em !important;
+  position: relative;
+}
+
+.mat-datepicker-toggle>button>span {
+  position: absolute;
+  top: 0;
+  right: 1em;
+}
+
+.mat-datepicker-toggle>button>span>svg {
+  height: 1em !important;
+  width: 1em !important;
+  position: absolute;
+  top: 0.5em;
+}
+
+/* End dates */
+
+/* Calendario */
+.mat-calendar-header {
+  color: var(--soft-lilac);
+  padding: 0 !important;
+}
+
+.mat-calendar-table {
+  margin-top: 0 !important;
+  border-spacing: 0.1em 0.1em !important;
+  border-collapse: separate !important;
+}
+
+.mat-calendar-table-header th {
+  padding: 0 !important;
+}
+
+.mat-calendar-body {
+  font-size: 0.6em !important;
+}
+
+.mat-calendar-body>tr>td {
+  border: none !important;
+}
+
+.mat-calendar-controls {
+  margin: 0 !important;
+}
+
+.mat-calendar-content {
+  padding: 0px !important;
+}
+
+.mat-calendar {
+  border-radius: 0.5em;
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),
+    0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+  width: 90% !important;
+}
+
+.mat-calendar-body-cell.selected>.mat-calendar-body-cell-content {
+  color: var(--white) !important;
+}
+
+.mat-datepicker-content .mat-calendar {
+  width: auto !important;
+  height: auto !important;
+  overflow: auto !important;
+}
+
+/* Fin calendario */
+
 /* Esilos checkbox */
 .mat-checkbox-inner-container {
   height: 1.25em !important;
@@ -245,3 +351,10 @@ mat-form-field {
 }
 
 /* Fin checkbox */
+
+/* pager */
+.ngx-pagination {
+  margin: 0 !important;
+}
+
+/* End pager */

@@ -1,0 +1,59 @@
+<div class="container_card">
+  <h2 class="main_title">Ciudades - {{edit ? 'Editar' : 'Agregar'}}</h2>
+
+  <div class="container_tables scroll_container">
+    <form [formGroup]="form">
+      <div class="container_formTables">
+        <div>
+          <mat-form-field>
+            <mat-label>País</mat-label>
+            <mat-select formControlName="idCountry">
+              <mat-option *ngFor="let data of listCountry" [value]="data.idCountry">
+                {{data.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="fc['idCountry'].invalid">Campo obligatorio: Ingresar información</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Ciudad</mat-label>
+            <mat-select formControlName="idCity">
+              <mat-option *ngFor="let data of listCities" [value]="data.idCity">
+                {{data.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="fc['idCity'].invalid">Campo obligatorio: Ingresar información</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Sede</mat-label>
+            <mat-select formControlName="idHeadquarters">
+              <mat-option *ngFor="let data of listHeadquarters" [value]="data.idHeadquarters">
+                {{data.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="fc['idHeadquarters'].invalid">Campo obligatorio: Ingresar información</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input formControlName="name" matInput maxlength="100" required placeholder="Nombre">
+            <mat-error *ngIf="fc['name'].invalid">{{TableNameErrorMessage}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="container_buttons">
+    <button class="button cancel" type="button" (click)="cancel()">Cancelar</button>
+    <button class="button accept" color="primary" type="button"
+      (click)="save()">{{edit?'Actualizar':'Guardar'}}</button>
+  </div>
+</div>

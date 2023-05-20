@@ -8,7 +8,8 @@ import { ModalData } from 'src/app/core/models/modal/modalData';
   templateUrl: './modal-alerts.component.html',
   styleUrls: ['./modal-alerts.component.scss']
 })
-export class ModalAlertsComponent implements OnInit {
+export class ModalAlertsComponent {
+  /* Definición de variables */
   title?: string;
   primaryInformation?: string;
   secondaryInformation?: string;
@@ -20,11 +21,13 @@ export class ModalAlertsComponent implements OnInit {
   color?: ModalColor;
   letterColor?: ModalColor;
 
+  /* Definición de colores */
   error = ModalColor.red;
   informative = ModalColor.yellow;
   successful = ModalColor.green;
   warning = ModalColor.purple;
 
+  /* Definición de eventos de salida */
   @Output() primaryEvent: EventEmitter<void>;
   @Output() secondaryEvent: EventEmitter<void>;
 
@@ -45,14 +48,12 @@ export class ModalAlertsComponent implements OnInit {
     this.secondaryEvent = new EventEmitter<void>();
   }
 
-  ngOnInit(): void {
-    console.log('');
-  }
-
+  /* Función para emitir el evento secundario */
   close() {
     this.secondaryEvent?.emit();
   }
 
+  /* Función para emitir el evento principal */
   primary() {
     this.primaryEvent?.emit();
   }

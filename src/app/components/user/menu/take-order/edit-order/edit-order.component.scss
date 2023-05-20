@@ -1,0 +1,64 @@
+/* Contenedor */
+.container_orders {
+  height: calc(100% - 8.5em);
+  position: relative;
+}
+
+/* Fin contenedor */
+
+/* Contenedor formulario */
+.container_formOrders {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(3, minmax(min(100%, 10em), 1fr));
+  gap: 2em;
+  width: 100%;
+  padding-bottom: 2em;
+}
+
+.content_totalOrder {
+  border-radius: 0.4em;
+  padding: 0.5em 0;
+  text-align: center;
+}
+
+/* Fin contenedor formulario */
+
+/* Botones cantidad */
+.item_amount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content_amountProduct {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 1.7em;
+  width: 10em;
+  border-radius: 0.4em;
+}
+
+.icon-quantity--disable {
+  color: var(--soft-gray) !important;
+  cursor: default;
+  pointer-events: none;
+}
+
+.content_amountInput {
+  text-align: center;
+  width: 4em;
+  border: 0px;
+  background-color: transparent;
+}
+
+.icon-quantity {
+  color: var(--soft-lilac);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+/* Fin botones cantidad */

@@ -1,0 +1,14 @@
+/* Formulario */
+.container_formReports {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(4, minmax(min(100%, 10em), 1fr));
+  gap: 2em;
+  width: 100%;
+}
+
+.btn_groupTwo {
+  grid-column: 2 span;
+}
+
+/* Fin formulario */

@@ -1,0 +1,89 @@
+<div class="container_card">
+  <h2 class="main_title">Orden - {{edit ? 'Editar' : 'Agregar'}}</h2>
+
+  <div class="container_orders scroll_container">
+    <div>
+      <form [formGroup]="form">
+        <div class="container_formOrders">
+          <div>
+            <mat-form-field>
+              <mat-label>Mesa</mat-label>
+              <mat-select formControlName="idTable">
+                <mat-option *ngFor="let data of listTable" [value]="data.idTable">
+                  {{data.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="fc['idTable'].invalid">{{TableErrorMessage}}</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <mat-label>Productos</mat-label>
+              <mat-select formControlName="idProduct">
+                <mat-option *ngFor="let data of listProduct" [value]="data.idProduct" (click)="addProduct(data)">
+                  {{data.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="fc['idProduct'].invalid">Campo obligatorio: Ingresar información</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <div class="content_totalOrder mat-elevation-z2">
+              <p class="dataInfoParagraphs">Total venta: {{totalValue}}</p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="listDataProduct.length>0">
+      <div id="tbl_order">
+        <table class="mat-elevation-z8">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let item of listDataProduct | paginate: {id:'order_table', itemsPerPage: 4, currentPage: paginador}">
+              <td class="item_name">{{item.name}}</td>
+              <td>{{item.price}}</td>
+              <td class="item_amount">
+                <div class="mat-elevation-z3" class="content_amountProduct">
+                  <button class="icon-quantity" [ngClass]="{'icon-quantity--disable': !amountProduct || edit}"
+                    (click)="quantityProduct(item.idProduct, false)">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <input [id]="'amount'+item.idProduct" [formControl]="amountProducts" type="text"
+                    class="content_amountInput" appOnly="Numbers" readonly>
+                  <button class="icon-quantity" (click)="quantityProduct(item.idProduct, true)">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </td>
+              <td>{{item.totalProduct}}</td>
+              <td>
+                <i *ngIf="!edit" class="fa-solid fa-xmark icon_edit" (click)="removeProduct(item)"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <pagination-controls class="my-pagination pagination" id="order_table" (pageChange)="paginador = $event"
+        previousLabel="" nextLabel=""></pagination-controls>
+    </div>
+  </div>
+
+  <div class="container_buttons">
+    <button class="button cancel" type="button" (click)="cancel()">Cancelar</button>
+    <button class="button accept" color="primary" type="button"
+      (click)="save()">{{edit?'Actualizar':'Guardar'}}</button>
+  </div>
+</div>

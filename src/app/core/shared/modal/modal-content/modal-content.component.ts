@@ -7,13 +7,15 @@ import { ModalData } from 'src/app/core/models/modal/modalData';
   templateUrl: './modal-content.component.html',
   styleUrls: ['./modal-content.component.scss']
 })
-export class ModalContentComponent implements OnInit {
+export class ModalContentComponent {
+  /* Definición de variables */
   content?: TemplateRef<any>;
   primaryButton?: string;
   secondaryButton?: string;
   border?: boolean;
   permiso?: boolean;
 
+  /* Definición de eventos de salida */
   @Output() primaryEvent: EventEmitter<void>;
   @Output() secondaryEvent: EventEmitter<void>;
 
@@ -27,18 +29,16 @@ export class ModalContentComponent implements OnInit {
     this.secondaryEvent = new EventEmitter<void>();
   }
 
-  ngOnInit(): void {
-    console.log();
-  }
-
   onScroll(event: Event) {
     const element = event.target as HTMLElement;
   }
 
+  /* Funcion para emitir cuando se da click en el segundo boton */
   second() {
     this.secondaryEvent?.emit();
   }
 
+  /* Funcion para emitir cuando se da click en el primer boton */
   primary() {
     this.primaryEvent?.emit();
   }
