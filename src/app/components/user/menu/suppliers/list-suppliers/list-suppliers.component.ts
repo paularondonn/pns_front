@@ -47,6 +47,7 @@ export class ListSuppliersComponent implements OnInit {
     this.listSuppliers();
   }
 
+  /* Función para listar Proveedores */
   private listSuppliers() {
     this.supplierService.listSuppliers().subscribe((resp) => {
       if (resp.data != null) {
@@ -58,6 +59,7 @@ export class ListSuppliersComponent implements OnInit {
     });
   }
 
+  /* Función para agregar o editar Proveedor */
   public addEdit(id: number = 0) {
     let message: string = '';
     if (id > 0) {

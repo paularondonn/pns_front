@@ -25,6 +25,7 @@ export class ListProductsComponent implements OnInit {
     this.listSuppliers();
   }
 
+  /* Función para listar Proveedores */
   private listSuppliers() {
     this.productService.listProducts().subscribe((resp) => {
       if (resp.data != null) {
@@ -36,6 +37,7 @@ export class ListProductsComponent implements OnInit {
     });
   }
 
+  /* Función para ir a la vista de agregar/editar */
   public addEdit(id: number = 0) {
     if (id > 0) {
       this.router.navigate(['/menu/productos', 'edit', id], { skipLocationChange: true });

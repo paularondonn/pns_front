@@ -51,6 +51,7 @@ export class EditProductsComponent implements OnInit {
     return this.form.value;
   }
 
+  /* Función para listar Proveedores */
   private listSuppliers() {
     this.suppliersService.listSuppliers().subscribe((resp) => {
       if (resp.data != null) {
@@ -61,6 +62,7 @@ export class EditProductsComponent implements OnInit {
     });
   }
 
+  /* Función para consultar detalle de productos */
   private detailProduct() {
     if (this.edit) {
       this.productService.consultProducts(this.idProduct).subscribe((resp) => {
@@ -70,10 +72,12 @@ export class EditProductsComponent implements OnInit {
     }
   }
 
+  /* Función para salir de la vista */
   public cancel() {
     this.router.navigate(['/menu', 'productos']);
   }
 
+  /* Función para guardar/actualizar un Producto */
   public save() {
     let message: string = this.edit ? 'Producto actualizado con exito' : 'Producto creado con exito';
     let data = { idProduct: this.edit ? Number(this.idProduct) : 0, idSupplier: this.fv.idSupplier, name: this.fv.name, price: this.fv.price, amount: this.fv.amount }
