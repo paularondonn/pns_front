@@ -77,12 +77,11 @@ export class EditCitiesComponent implements OnInit {
 
   /* Función para guardar/actualizar ciudad */
   public save() {
-    let message: string = this.edit ? 'Ciudad actualizada con exito' : 'Ciudad creada con exito';
-    let data = { idCity: this.idCity, idCountry: this.fv.idCountry, name: this.fv.name }
+    let data = { idCity: this.edit ? Number(this.idCity) : 0, idCountry: this.fv.idCountry, name: this.fv.name }
     this.cityService.createUpdateCity(data).subscribe((resp) => {
       if (resp.ok) {
         const destroy$: Subject<boolean> = new Subject<boolean>();
-        const dialogRef = this.modal.modalSuccess(message, '', '30em');
+        const dialogRef = this.modal.modalSuccess(resp.message, '', '30em');
         dialogRef.componentInstance.primaryEvent?.pipe(takeUntil(destroy$)).subscribe((_) => {
           this.router.navigate(['/menu', 'ciudades']);
           dialogRef.close();

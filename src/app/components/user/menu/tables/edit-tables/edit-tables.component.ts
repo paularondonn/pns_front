@@ -127,7 +127,7 @@ export class EditTablesComponent implements OnInit {
   /* Función para crear o actualizar mesa */
   public save() {
     let message: string = this.edit ? 'Mesa actualizada con exito' : 'Mesa creada con exito';
-    let data = { idTable: this.idTable, idHeadquarters: this.fv.idHeadquarters, name: this.fv.name }
+    let data = { idTable: this.edit ? Number(this.idTable) : 0, idHeadquarters: this.fv.idHeadquarters, name: this.fv.name }
     this.tableService.createUpdateTable(data).subscribe((resp) => {
       if (resp.ok) {
         const destroy$: Subject<boolean> = new Subject<boolean>();

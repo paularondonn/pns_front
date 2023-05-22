@@ -58,17 +58,14 @@ export class ListCountriesComponent implements OnInit {
 
   /* Función para agregar o editar pais */
   public addEdit(id: number = 0) {
-    let message: string = '';
     if (id > 0) {
       this.edit = true;
       this.countryService.consultCountries(id).subscribe((resp) => {
         this.name.setValue(resp.data.name);
       });
-      message = 'País actualizado con exito';
     } else {
       this.edit = false;
       this.name.setValue('');
-      message = 'País creado con exito';
     }
     const destroy$: Subject<boolean> = new Subject<boolean>();
     /* Variables recibidas por el modal */
@@ -89,7 +86,7 @@ export class ListCountriesComponent implements OnInit {
         this.countryService.createUpdateCountry(data).subscribe((resp) => {
           if (resp.ok) {
             dialogRef.close();
-            const dialogRefM = this.modal.modalSuccess(message, '', '35em');
+            const dialogRefM = this.modal.modalSuccess(resp.message, '', '35em');
             dialogRefM.componentInstance.primaryEvent?.pipe(takeUntil(destroy$)).subscribe((_) => {
               dialogRefM.close();
               this.listCountries();
